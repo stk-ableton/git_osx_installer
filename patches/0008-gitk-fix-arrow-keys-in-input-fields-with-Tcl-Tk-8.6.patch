@@ -1,0 +1,58 @@
+From 94e0dc388baf3865011f48bfd9e9ea30f498f74d Mon Sep 17 00:00:00 2001
+From: Johannes Schindelin <johannes.schindelin@gmx.de>
+Date: Tue, 16 Feb 2016 16:42:06 +0100
+Subject: [PATCH 08/12] gitk: fix arrow keys in input fields with Tcl/Tk >= 8.6
+
+Tcl/Tk 8.6 introduced new events for the cursor left/right keys and
+apparently changed the behavior of the previous event.
+
+Let's work around that by using the new events when we are running with
+Tcl/Tk 8.6 or later.
+
+This fixes https://github.com/git-for-windows/git/issues/495
+
+Signed-off-by: Johannes Schindelin <johannes.schindelin@gmx.de>
+---
+ gitk-git/gitk | 12 +++++++++---
+ 1 file changed, 9 insertions(+), 3 deletions(-)
+
+diff --git a/gitk-git/gitk b/gitk-git/gitk
+index 8d55bc20ad..f022ab44f3 100755
+--- a/gitk-git/gitk
++++ b/gitk-git/gitk
+@@ -2094,7 +2094,7 @@ proc makewindow {} {
+     global headctxmenu progresscanv progressitem progresscoords statusw
+     global fprogitem fprogcoord lastprogupdate progupdatepending
+     global rprogitem rprogcoord rownumsel numcommits
+-    global have_tk85 use_ttk NS
++    global have_tk85 have_tk86 use_ttk NS
+     global git_version
+     global worddiff
+ 
+@@ -2597,8 +2597,13 @@ proc makewindow {} {
+     bind . <Key-Down> "selnextline 1"
+     bind . <Shift-Key-Up> "dofind -1 0"
+     bind . <Shift-Key-Down> "dofind 1 0"
+-    bindkey <Key-Right> "goforw"
+-    bindkey <Key-Left> "goback"
++    if {$have_tk86} {
++        bindkey <<NextChar>> "goforw"
++        bindkey <<PrevChar>> "goback"
++    } else {
++        bindkey <Key-Right> "goforw"
++        bindkey <Key-Left> "goback"
++    }
+     bind . <Key-Prior> "selnextpage -1"
+     bind . <Key-Next> "selnextpage 1"
+     bind . <$M1B-Home> "allcanvs yview moveto 0.0"
+@@ -12635,6 +12640,7 @@ set nullid2 "0000000000000000000000000000000000000001"
+ set nullfile "/dev/null"
+ 
+ set have_tk85 [expr {[package vcompare $tk_version "8.5"] >= 0}]
++set have_tk86 [expr {[package vcompare $tk_version "8.6"] >= 0}]
+ if {![info exists have_ttk]} {
+     set have_ttk [llength [info commands ::ttk::style]]
+ }
+-- 
+2.29.0.12.g8e3af0896f.dirty
+

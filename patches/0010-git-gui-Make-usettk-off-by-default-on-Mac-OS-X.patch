@@ -1,0 +1,32 @@
+From 4293270c09570c27ed076ada61893aa5f01441c9 Mon Sep 17 00:00:00 2001
+From: Stefan Haller <stefan@haller-berlin.de>
+Date: Mon, 27 Sep 2010 08:12:53 +0200
+Subject: [PATCH 10/12] git-gui: Make usettk off by default on Mac OS X
+
+This option is supposed to make a Tcl/Tk app look more like a native app for the
+respective platform. This doesn't seem to work on Mac, it just looks ugly (for
+instance, the colored pane headers are grey).
+---
+ git-gui/git-gui.sh | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/git-gui/git-gui.sh b/git-gui/git-gui.sh
+index 1f243f43ca..f946d26a27 100755
+--- a/git-gui/git-gui.sh
++++ b/git-gui/git-gui.sh
+@@ -858,7 +858,11 @@ set default_config(gui.fontui) [font configure font_ui]
+ set default_config(gui.fontdiff) [font configure font_diff]
+ # TODO: this option should be added to the git-config documentation
+ set default_config(gui.maxfilesdisplayed) 5000
+-set default_config(gui.usettk) 1
++if {[is_MacOSX]} {
++	set default_config(gui.usettk) 0
++} else {
++	set default_config(gui.usettk) 1
++}
+ set default_config(gui.warndetachedcommit) 1
+ set default_config(gui.tabsize) 8
+ set font_descs {
+-- 
+2.29.0.12.g8e3af0896f.dirty
+

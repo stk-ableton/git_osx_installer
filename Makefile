@@ -103,6 +103,7 @@ $(BUILD_DIR)/git-$(VERSION)/Makefile: build/git-$(VERSION).tar.gz
 	tar xzf build/git-$(VERSION).tar.gz -C $(BUILD_DIR)
 	echo TCL_PATH=$(GIT_PREFIX)/tcl-tk/bin/tclsh$(TCL_VERSION) >$(BUILD_DIR)/git-$(VERSION)/config.mak
 	echo TCLTK_PATH=$(GIT_PREFIX)/tcl-tk/bin/wish$(TCL_VERSION) >>$(BUILD_DIR)/git-$(VERSION)/config.mak
+	for p in patches/*.patch; do git apply --stat --apply --directory=$(BUILD_DIR)/git-$(VERSION) "$$p"; done
 	touch $@
 
 $(BUILD_DIR)/git-$(VERSION)/osx-built: $(BUILD_DIR)/git-$(VERSION)/Makefile

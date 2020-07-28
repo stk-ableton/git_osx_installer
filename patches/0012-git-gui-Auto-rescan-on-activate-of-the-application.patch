@@ -1,0 +1,56 @@
+From e20cecc4b26326eb783e3c885304211081b6fda5 Mon Sep 17 00:00:00 2001
+From: Stefan Haller <stefan@haller-berlin.de>
+Date: Wed, 14 Oct 2020 11:21:59 +0200
+Subject: [PATCH 12/12] git-gui: Auto-rescan on activate of the application
+
+Do an automatic rescan whenever the git-gui app is brought to the front.
+Most other GUI tools do this, and it's very convenient; no more pressing
+F5 manually.
+
+People who don't like this behavior can turn it off using
+"git config gui.autorescan false".
+
+Signed-off-by: Stefan Haller <stefan@haller-berlin.de>
+---
+ git-gui/git-gui.sh | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
+
+diff --git a/git-gui/git-gui.sh b/git-gui/git-gui.sh
+index f946d26a27..eb09de5f8d 100755
+--- a/git-gui/git-gui.sh
++++ b/git-gui/git-gui.sh
+@@ -871,6 +871,7 @@ set font_descs {
+ }
+ set default_config(gui.stageuntracked) ask
+ set default_config(gui.displayuntracked) true
++set default_config(gui.autorescan) true
+ 
+ ######################################################################
+ ##
+@@ -3981,6 +3982,10 @@ bind .   <Alt-Key-2> {focus_widget $::ui_index}
+ bind .   <Alt-Key-3> {focus $::ui_diff}
+ bind .   <Alt-Key-4> {focus $::ui_comm}
+ 
++if {[is_config_true gui.autorescan]} {
++	bind .   <Activate>  ui_do_rescan
++}
++
+ set file_lists_last_clicked($ui_index) {}
+ set file_lists_last_clicked($ui_workdir) {}
+ 
+@@ -4145,7 +4150,11 @@ after 1 {
+ 	if {[is_enabled initialamend]} {
+ 		force_amend
+ 	} else {
+-		do_rescan
++		# No need to do the inital rescan when autorescan is true, as the
++		# <Activate> binding will take care of it:
++		if {[is_config_false gui.autorescan]} {
++			do_rescan
++		}
+ 	}
+ 
+ 	if {[is_enabled nocommitmsg]} {
+-- 
+2.29.0.12.g8e3af0896f.dirty
+

@@ -1,0 +1,56 @@
+From 53e4af030e70788f9a48a7a6dd98dce1f7702409 Mon Sep 17 00:00:00 2001
+From: Stefan Haller <stefan@haller-berlin.de>
+Date: Fri, 21 Mar 2014 15:19:50 +0100
+Subject: [PATCH 11/12] git-gui: Add simple mouse-over highlighting for diff
+ hunks
+
+This makes it a little easier to see where hunks start and end, in other words
+what would be affected when you choose "Stage hunk".
+---
+ git-gui/lib/diff.tcl | 16 +++++++++++++++-
+ 1 file changed, 15 insertions(+), 1 deletion(-)
+
+diff --git a/git-gui/lib/diff.tcl b/git-gui/lib/diff.tcl
+index 871ad488c2..42052081fb 100644
+--- a/git-gui/lib/diff.tcl
++++ b/git-gui/lib/diff.tcl
+@@ -389,6 +389,9 @@ proc read_diff {fd conflict_size cont_info} {
+ 	global current_diff_queue
+ 	global diff_empty_count
+ 
++	set current_hunk_no 0
++	set current_hunk_tag ""
++
+ 	$ui_diff conf -state normal
+ 	while {[gets $fd line] >= 0} {
+ 		foreach {line markup} [parse_color_line $line] break
+@@ -405,7 +408,17 @@ proc read_diff {fd conflict_size cont_info} {
+ 
+ 		# -- Check for end of diff header (any hunk line will do this).
+ 		#
+-		if {[regexp {^@@+ } $line]} {set ::current_diff_inheader 0}
++		if {[regexp {^@@+ } $line]} {
++			set ::current_diff_inheader 0
++
++			set current_hunk_no [expr $current_hunk_no + 1]
++			set current_hunk_tag "hunk$current_hunk_no"
++			$ui_diff tag bind $current_hunk_tag <Enter> \
++				"$ui_diff tag conf $current_hunk_tag -background {#f4f4f4}"
++			$ui_diff tag bind $current_hunk_tag <Leave> \
++				"$ui_diff tag conf $current_hunk_tag -background {#ffffff}"
++			$ui_diff tag lower $current_hunk_tag
++		}
+ 
+ 		# -- Automatically detect if this is a 3 way diff.
+ 		#
+@@ -520,6 +533,7 @@ proc read_diff {fd conflict_size cont_info} {
+ 			}
+ 			}
+ 		}
++		set tags "$tags $current_hunk_tag"
+ 		set mark [$ui_diff index "end - 1 line linestart"]
+ 		$ui_diff insert end $line $tags
+ 		if {[string index $line end] eq "\r"} {
+-- 
+2.29.0.12.g8e3af0896f.dirty
+

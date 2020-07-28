@@ -1,0 +1,34 @@
+From 5d7c7ecb951327219e83395e1c33cf9bf06d80fc Mon Sep 17 00:00:00 2001
+From: Stefan Haller <stefan@haller-berlin.de>
+Date: Sun, 14 Nov 2010 11:47:35 +0100
+Subject: [PATCH 05/12] gitk: Avoid horizontal scrolling of the commit list on
+ Mac
+
+With two-finger scrolling on a track pad, horizontal scrolling
+of the commit list is usually unintentional, so avoid it
+completely. This means it's also no longer possible to scroll
+horizontally with shift-mousewheel, but this seems like a
+small price to pay.
+---
+ gitk-git/gitk | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/gitk-git/gitk b/gitk-git/gitk
+index e8eaca731d..bacdbef29b 100755
+--- a/gitk-git/gitk
++++ b/gitk-git/gitk
+@@ -2577,8 +2577,9 @@ proc makewindow {} {
+                 allcanvs yview scroll $delta units
+             }
+             bindall <Shift-MouseWheel> {
+-                set delta [expr {- (%D)}]
+-                $canv xview scroll $delta units
++                # Intentionally left empty. This prevents the canvas from
++                # scrolling vertically for horizontal wheel events, e.g.
++                # when moving diagonally with two fingers on a trackpad.
+             }
+         }
+     }
+-- 
+2.29.0.12.g8e3af0896f.dirty
+

@@ -1,0 +1,59 @@
+From 19ac0ccfe663b75935e64837e23b7dcf54954cbf Mon Sep 17 00:00:00 2001
+From: Stefan Haller <stefan@haller-berlin.de>
+Date: Tue, 13 Oct 2020 11:36:02 +0200
+Subject: [PATCH 03/12] git-gui/gitk: Delete the code to bring app to the front
+
+With a modern enough Tcl/Tk this no longer seems to be needed.
+---
+ git-gui/git-gui.sh | 14 --------------
+ gitk-git/gitk      |  9 ---------
+ 2 files changed, 23 deletions(-)
+
+diff --git a/git-gui/git-gui.sh b/git-gui/git-gui.sh
+index 8dd01d18e7..11e7b304d8 100755
+--- a/git-gui/git-gui.sh
++++ b/git-gui/git-gui.sh
+@@ -138,20 +138,6 @@ proc strcat {args} {
+ ::msgcat::mcload $oguimsg
+ unset oguimsg
+ 
+-######################################################################
+-##
+-## On Mac, bring the current Wish process window to front
+-
+-if {[tk windowingsystem] eq "aqua"} {
+-	catch {
+-		exec osascript -e [format {
+-			tell application "System Events"
+-				set frontmost of processes whose unix id is %d to true
+-			end tell
+-		} [pid]]
+-	}
+-}
+-
+ ######################################################################
+ ##
+ ## read only globals
+diff --git a/gitk-git/gitk b/gitk-git/gitk
+index 7644a12697..e8eaca731d 100755
+--- a/gitk-git/gitk
++++ b/gitk-git/gitk
+@@ -12305,15 +12305,6 @@ if {[catch {package require Tk 8.4} err]} {
+     exit 1
+ }
+ 
+-# on OSX bring the current Wish process window to front
+-if {[tk windowingsystem] eq "aqua"} {
+-    exec osascript -e [format {
+-        tell application "System Events"
+-            set frontmost of processes whose unix id is %d to true
+-        end tell
+-    } [pid] ]
+-}
+-
+ # Unset GIT_TRACE var if set
+ if { [info exists ::env(GIT_TRACE)] } {
+     unset ::env(GIT_TRACE)
+-- 
+2.29.0.12.g8e3af0896f.dirty
+

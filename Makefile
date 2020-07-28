@@ -168,21 +168,21 @@ disk-image/VERSION-$(VERSION)-$(ARCH_CODE)-$(OSX_CODE):
 	rm -f disk-image/*.pkg disk-image/VERSION-* disk-image/.DS_Store
 	touch "$@"
 
-disk-image/git-$(VERSION)-$(BUILD_CODE).pkg: disk-image/VERSION-$(VERSION)-$(ARCH_CODE)-$(OSX_CODE) $(DESTDIR)$(GIT_PREFIX)/VERSION-$(VERSION)-$(BUILD_CODE) $(BUILD_DIR)/git-$(VERSION)/osx-installed $(BUILD_DIR)/git-$(VERSION)/osx-built-assert-$(ARCH_CODE)
-	pkgbuild --identifier com.git.pkg --version $(VERSION) --root $(DESTDIR)$(PREFIX) --install-location $(PREFIX) --component-plist ./git-components.plist disk-image/git-$(VERSION)-$(BUILD_CODE).pkg
+disk-image/git-$(VERSION).pkg: disk-image/VERSION-$(VERSION)-$(ARCH_CODE)-$(OSX_CODE) $(DESTDIR)$(GIT_PREFIX)/VERSION-$(VERSION)-$(BUILD_CODE) $(BUILD_DIR)/git-$(VERSION)/osx-installed $(BUILD_DIR)/git-$(VERSION)/osx-built-assert-$(ARCH_CODE)
+	pkgbuild --identifier com.git.pkg --version $(VERSION) --root $(DESTDIR)$(PREFIX) --install-location $(PREFIX) --component-plist ./git-components.plist disk-image/git-$(VERSION).pkg
 
-git-%-$(BUILD_CODE).dmg: disk-image/git-%-$(BUILD_CODE).pkg
-	rm -f git-$(VERSION)-$(BUILD_CODE)*.dmg
-	hdiutil create git-$(VERSION)-$(BUILD_CODE).uncompressed.dmg -fs HFS+ -srcfolder disk-image -volname "Git $(VERSION) $(OSX_NAME) Intel $(ARCH)" -ov
-	hdiutil convert -format UDZO -o $@ git-$(VERSION)-$(BUILD_CODE).uncompressed.dmg
-	rm -f git-$(VERSION)-$(BUILD_CODE).uncompressed.dmg
+git-%.dmg: disk-image/git-%.pkg
+	rm -f git-$(VERSION)*.dmg
+	hdiutil create git-$(VERSION).uncompressed.dmg -fs HFS+ -srcfolder disk-image -volname "Git $(VERSION) $(OSX_NAME) Intel $(ARCH)" -ov
+	hdiutil convert -format UDZO -o $@ git-$(VERSION).uncompressed.dmg
+	rm -f git-$(VERSION).uncompressed.dmg
 
-tmp/deployed-%-$(BUILD_CODE): git-%-$(BUILD_CODE).dmg
+tmp/deployed-%-$(BUILD_CODE): git-%.dmg
 	mkdir -p tmp
-	scp git-$(VERSION)-$(BUILD_CODE).dmg timcharper@frs.sourceforge.net:/home/pfs/project/git-osx-installer | tee $@.working
+	scp git-$(VERSION).dmg timcharper@frs.sourceforge.net:/home/pfs/project/git-osx-installer | tee $@.working
 	mv $@.working $@
 
-package: disk-image/git-$(VERSION)-$(BUILD_CODE).pkg
+package: disk-image/git-$(VERSION).pkg
 install-assets: $(BUILD_DIR)/git-$(VERSION)/osx-installed-assets
 install-bin: $(BUILD_DIR)/git-$(VERSION)/osx-installed-bin
 install-man: $(BUILD_DIR)/git-$(VERSION)/osx-installed-man
@@ -214,4 +214,4 @@ reinstall:
 	rm -f $(BUILD_DIR)/git-$(VERSION)/osx-installed*
 	$(SUBMAKE) install
 
-image: git-$(VERSION)-$(BUILD_CODE).dmg
+image: git-$(VERSION).dmg

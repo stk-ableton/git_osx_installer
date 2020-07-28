@@ -18,4 +18,4 @@ echo "Testing the installer..."
 
 . test_installer.sh
 
-do-make deploy
+do-make image

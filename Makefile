@@ -127,7 +127,7 @@ $(BUILD_DIR)/git-$(VERSION)/osx-installed-assets: $(BUILD_DIR)/git-$(VERSION)/os
 	sh -c "echo .DS_Store >> $(DESTDIR)$(GIT_PREFIX)/share/git-core/templates/info/exclude"
 	mkdir -p $(DESTDIR)$(PREFIX)/bin
 	cd $(DESTDIR)$(PREFIX)/bin; find ../git/bin -type f -exec ln -sf {} \;
-	for man in man1 man3 man5 man7; do mkdir -p $(DESTDIR)$(PREFIX)/share/man/$$man; (cd $(DESTDIR)$(PREFIX)/share/man/$$man; ln -sf ../../../git/share/man/$$man/* ./); done
+	for man in man1 man5 man7; do mkdir -p $(DESTDIR)$(PREFIX)/share/man/$$man; (cd $(DESTDIR)$(PREFIX)/share/man/$$man; ln -sf ../../../git/share/man/$$man/* ./); done
 	touch $@
 
 $(BUILD_DIR)/git-$(VERSION)/osx-installed-bin: $(BUILD_DIR)/git-$(VERSION)/osx-built $(BUILD_DIR)/git-$(VERSION)/osx-built-keychain $(DESTDIR)$(GIT_PREFIX)/VERSION-$(VERSION)-$(BUILD_CODE)

@@ -45,6 +45,8 @@ DOWNLOAD_LOCATION=https://www.kernel.org/pub/software/scm/git
 
 XML_CATALOG_FILES=$(shell bin/find-file /usr/local/etc/xml/catalog)
 
+TCL_VERSION = 8.6
+
 BUILD_CODE := intel-$(ARCH_CODE)-$(OSX_CODE)
 BUILD_DIR := build/$(BUILD_CODE)
 DESTDIR := $(PWD)/stage/git-$(BUILD_CODE)-$(VERSION)
@@ -99,10 +101,14 @@ build/%.tar.gz:
 $(BUILD_DIR)/git-$(VERSION)/Makefile: build/git-$(VERSION).tar.gz
 	mkdir -p $(BUILD_DIR)
 	tar xzf build/git-$(VERSION).tar.gz -C $(BUILD_DIR)
+	echo TCL_PATH=$(GIT_PREFIX)/tcl-tk/bin/tclsh$(TCL_VERSION) >$(BUILD_DIR)/git-$(VERSION)/config.mak
+	echo TCLTK_PATH=$(GIT_PREFIX)/tcl-tk/bin/wish$(TCL_VERSION) >>$(BUILD_DIR)/git-$(VERSION)/config.mak
 	touch $@
 
 $(BUILD_DIR)/git-$(VERSION)/osx-built: $(BUILD_DIR)/git-$(VERSION)/Makefile
 	[ -d $(DESTDIR)$(GIT_PREFIX) ] && $(SUDO) rm -rf $(DESTDIR) || echo ok
+	mkdir -p $(DESTDIR)$(GIT_PREFIX)
+	./build_tcl.sh && cp -r $(GIT_PREFIX)/tcl-tk $(DESTDIR)$(GIT_PREFIX)
 	cd $(BUILD_DIR)/git-$(VERSION); $(SUBMAKE) -j $(CORES) all html strip
 	touch $@
 

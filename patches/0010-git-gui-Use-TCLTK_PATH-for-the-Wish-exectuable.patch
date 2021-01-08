@@ -1,7 +1,7 @@
-From 72bd28ac1334a8721ae4613b73345a527a508d20 Mon Sep 17 00:00:00 2001
+From f580f8b51e3002e3f07a4bf3ee150fac5bd18d7b Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Mon, 12 Oct 2020 17:13:51 +0200
-Subject: [PATCH 09/12] git-gui: Use TCLTK_PATH for the Wish exectuable
+Subject: [PATCH 10/18] git-gui: Use TCLTK_PATH for the Wish exectuable
 
 This allows us to use a non-framework version of Tcl/Tk.
 
@@ -12,10 +12,10 @@ in fixing this.
  1 file changed, 5 insertions(+), 5 deletions(-)
 
 diff --git a/git-gui/Makefile b/git-gui/Makefile
-index f10caedaa7..0f5ca74b3c 100644
+index 56c85a85c1..5d260dfa59 100644
 --- a/git-gui/Makefile
 +++ b/git-gui/Makefile
-@@ -180,7 +180,7 @@ git-gui: GIT-VERSION-FILE GIT-GUI-VARS
+@@ -182,7 +182,7 @@ git-gui: GIT-VERSION-FILE GIT-GUI-VARS
  	echo '	'echo \'git-gui version '$(GITGUI_VERSION)'\' >>$@+ && \
  	echo else >>$@+ && \
  	echo '	libdir="$${GIT_GUI_LIB_DIR:-$(libdir_SQ)}"' >>$@+ && \
@@ -24,7 +24,7 @@ index f10caedaa7..0f5ca74b3c 100644
  		'"$$0" "$$@"' >>$@+ && \
  	echo fi >>$@+ && \
  	chmod +x $@+ && \
-@@ -190,15 +190,15 @@ Git\ Gui.app: GIT-VERSION-FILE GIT-GUI-VARS \
+@@ -192,15 +192,15 @@ Git\ Gui.app: GIT-VERSION-FILE GIT-GUI-VARS \
  		macosx/Info.plist \
  		macosx/git-gui.icns \
  		macosx/AppMain.tcl \
@@ -45,5 +45,5 @@ index f10caedaa7..0f5ca74b3c 100644
  		>'$@'+/Contents/Info.plist && \
  	sed -e 's|@@gitexecdir@@|$(gitexecdir_SQ)|' \
 -- 
-2.29.0.12.g8e3af0896f.dirty
+2.30.0.100.gf7cae41892
 

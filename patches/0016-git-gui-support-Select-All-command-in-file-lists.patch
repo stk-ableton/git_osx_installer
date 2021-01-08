@@ -1,0 +1,61 @@
+From 08bf39f7cad24a9f81a4736d33d1e61d714b41fe Mon Sep 17 00:00:00 2001
+From: Stefan Haller <stefan@haller-berlin.de>
+Date: Sun, 22 Nov 2020 20:32:38 +0100
+Subject: [PATCH 16/18] git-gui: support "Select All" command in file lists
+
+Signed-off-by: Stefan Haller <stefan@haller-berlin.de>
+---
+ git-gui/git-gui.sh | 23 ++++++++++++++++++++++-
+ 1 file changed, 22 insertions(+), 1 deletion(-)
+
+diff --git a/git-gui/git-gui.sh b/git-gui/git-gui.sh
+index e4785749d2..16337bee74 100755
+--- a/git-gui/git-gui.sh
++++ b/git-gui/git-gui.sh
+@@ -2725,6 +2725,25 @@ proc toggle_commit_type {} {
+ 	do_select_commit_type
+ }
+ 
++proc do_select_all {} {
++	global ui_diff ui_comm ui_workdir ui_index
++	global file_lists selected_paths
++
++	set w [focus]
++	switch -- $w \
++		$ui_diff - \
++		$ui_comm {
++			$w tag add sel 0.0 end
++		} \
++		$ui_workdir - \
++		$ui_index {
++			foreach path $file_lists($w) {
++				set selected_paths($path) 1
++			}
++			$w tag add in_sel 0.0 [expr {[llength $file_lists($w)] + 1}].0
++		}
++}
++
+ ######################################################################
+ ##
+ ## ui construction
+@@ -2871,7 +2890,7 @@ menu .mbar.edit
+ 	-accelerator Del
+ .mbar.edit add separator
+ .mbar.edit add command -label [mc "Select All"] \
+-	-command {catch {[focus] tag add sel 0.0 end}} \
++	-command do_select_all \
+ 	-accelerator $M1T-A
+ 
+ # -- Branch Menu
+@@ -4025,6 +4044,8 @@ foreach i [list $ui_index $ui_workdir] {
+ 	bind $i <Key-Down>        { toggle_or_diff down %W; break }
+ 	bind $i <Shift-Key-Up>    { extend_or_shrink_range up %W; break }
+ 	bind $i <Shift-Key-Down>  { extend_or_shrink_range down %W; break }
++	bind $i <$M1B-Key-a> 	  { do_select_all; break }
++	bind $i <$M1B-Key-A> 	  { do_select_all; break }
+ }
+ unset i
+ 
+-- 
+2.30.0.100.gf7cae41892
+

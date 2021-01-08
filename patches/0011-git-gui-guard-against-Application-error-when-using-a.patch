@@ -1,0 +1,37 @@
+From 3b383cb1963459d6d38df7c21aa1a048e29b5f95 Mon Sep 17 00:00:00 2001
+From: Stefan Haller <stefan@haller-berlin.de>
+Date: Wed, 18 Nov 2020 21:37:10 +0100
+Subject: [PATCH 11/18] git-gui: guard against "Application error" when using
+ arrow keys
+
+In rare cases, pressing up-arrow or down-arrow in the list of unstaged or staged
+files would result in an "Application Error" popup with the text
+'expected number but got ""'. One such situation was: if there's one modified
+(unstaged) file and one untracked file, and you click on the modified file and
+press Command-T to stage it, then the untracked file isn't selected. If you then
+press up-arrow or down-arrow, the code that's changed here would try to find a
+selected file, assuming there must be one. Make this more robust by returning 0
+in this case, so that pressing up or down starts from the top.
+
+Signed-off-by: Stefan Haller <stefan@haller-berlin.de>
+---
+ git-gui/git-gui.sh | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/git-gui/git-gui.sh b/git-gui/git-gui.sh
+index 8315f6676e..ee7ad2149a 100755
+--- a/git-gui/git-gui.sh
++++ b/git-gui/git-gui.sh
+@@ -2517,7 +2517,8 @@ proc toggle_or_diff {mode w args} {
+ 				set last_clicked {}
+ 				return
+ 			}
+-			set lno [expr {int([lindex [$w tag ranges in_diff] 0])}]
++			set ranges [$w tag ranges in_diff]
++			set lno [expr {[llength $ranges] > 0 ? int([lindex $ranges 0]) : 0}]
+ 		}
+ 		if {$mode eq "toggle"} {
+ 			set col 0; set y 2
+-- 
+2.30.0.100.gf7cae41892
+

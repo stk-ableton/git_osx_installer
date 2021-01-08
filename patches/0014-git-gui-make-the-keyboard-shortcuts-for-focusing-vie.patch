@@ -1,0 +1,43 @@
+From a8d8d758411178ebf9889612f5c84464087a80a1 Mon Sep 17 00:00:00 2001
+From: Stefan Haller <stefan@haller-berlin.de>
+Date: Thu, 19 Nov 2020 08:47:12 +0100
+Subject: [PATCH 14/18] git-gui: make the keyboard shortcuts for focusing views
+ work on Mac
+
+For some reason that I couldn't figure out, the Alt-1 (etc.) shortcuts don't
+work on Mac. But using Cmd is better for these anyway on Mac.
+
+Signed-off-by: Stefan Haller <stefan@haller-berlin.de>
+---
+ git-gui/git-gui.sh | 15 +++++++++++----
+ 1 file changed, 11 insertions(+), 4 deletions(-)
+
+diff --git a/git-gui/git-gui.sh b/git-gui/git-gui.sh
+index 65b7ab7975..340f6a80b6 100755
+--- a/git-gui/git-gui.sh
++++ b/git-gui/git-gui.sh
+@@ -3988,10 +3988,17 @@ foreach i [list $ui_index $ui_workdir] {
+ }
+ unset i
+ 
+-bind .   <Alt-Key-1> {focus_widget $::ui_workdir}
+-bind .   <Alt-Key-2> {focus_widget $::ui_index}
+-bind .   <Alt-Key-3> {focus $::ui_diff}
+-bind .   <Alt-Key-4> {focus $::ui_comm}
++if {[is_MacOSX]} {
++	bind .   <$M1B-Key-1> {focus_widget $::ui_workdir}
++	bind .   <$M1B-Key-2> {focus_widget $::ui_index}
++	bind .   <$M1B-Key-3> {focus $::ui_diff}
++	bind .   <$M1B-Key-4> {focus $::ui_comm}
++} else {
++	bind .   <Alt-Key-1> {focus_widget $::ui_workdir}
++	bind .   <Alt-Key-2> {focus_widget $::ui_index}
++	bind .   <Alt-Key-3> {focus $::ui_diff}
++	bind .   <Alt-Key-4> {focus $::ui_comm}
++}
+ 
+ set file_lists_last_clicked($ui_index) {}
+ set file_lists_last_clicked($ui_workdir) {}
+-- 
+2.30.0.100.gf7cae41892
+

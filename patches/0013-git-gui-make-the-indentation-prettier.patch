@@ -1,0 +1,40 @@
+From e689f22dfe149e3be4e2d3ba9cbb0707bf6031b2 Mon Sep 17 00:00:00 2001
+From: Stefan Haller <stefan@haller-berlin.de>
+Date: Thu, 19 Nov 2020 19:52:54 +0100
+Subject: [PATCH 13/18] git-gui: make the indentation prettier
+
+We could have done this in the previous commit, but that would have made its
+diff harder to read.
+
+Signed-off-by: Stefan Haller <stefan@haller-berlin.de>
+---
+ git-gui/git-gui.sh | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/git-gui/git-gui.sh b/git-gui/git-gui.sh
+index c128bfa9ef..65b7ab7975 100755
+--- a/git-gui/git-gui.sh
++++ b/git-gui/git-gui.sh
+@@ -3977,14 +3977,14 @@ bind .   <$M1B-Key-KP_Add> {show_more_context;break}
+ bind .   <$M1B-Key-Return> do_commit
+ bind .   <$M1B-Key-KP_Enter> do_commit
+ foreach i [list $ui_index $ui_workdir] {
+-	bind $i <Button-1>       { toggle_or_diff click %W %x %y; break }
++	bind $i <Button-1>        { toggle_or_diff click %W %x %y; break }
+ 	bind $i <Double-Button-1> { toggle_or_diff toggle %W %x %y; break }
+ 	bind $i <Key-Return>      { toggle_or_diff toggle %W %x %y; break }
+ 	bind $i <$M1B-Key-Return> { continue }
+-	bind $i <$M1B-Button-1>  { add_one_to_selection %W %x %y; break }
+-	bind $i <Shift-Button-1> { add_range_to_selection %W %x %y; break }
+-	bind $i <Key-Up>         { toggle_or_diff up %W; break }
+-	bind $i <Key-Down>       { toggle_or_diff down %W; break }
++	bind $i <$M1B-Button-1>   { add_one_to_selection %W %x %y; break }
++	bind $i <Shift-Button-1>  { add_range_to_selection %W %x %y; break }
++	bind $i <Key-Up>          { toggle_or_diff up %W; break }
++	bind $i <Key-Down>        { toggle_or_diff down %W; break }
+ }
+ unset i
+ 
+-- 
+2.30.0.100.gf7cae41892
+

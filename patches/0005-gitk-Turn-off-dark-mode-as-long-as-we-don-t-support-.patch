@@ -1,0 +1,25 @@
+From 7929fe0b48c301e7799df1162743026dc181107d Mon Sep 17 00:00:00 2001
+From: Stefan Haller <stefan@haller-berlin.de>
+Date: Fri, 8 Jan 2021 15:28:19 +0100
+Subject: [PATCH 05/18] gitk: Turn off dark mode as long as we don't support it
+ properly
+
+---
+ gitk-git/macosx/Info.plist | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/gitk-git/macosx/Info.plist b/gitk-git/macosx/Info.plist
+index d88040b508..3dd7e451e4 100644
+--- a/gitk-git/macosx/Info.plist
++++ b/gitk-git/macosx/Info.plist
+@@ -26,5 +26,7 @@
+ 	<string>@@GIT_VERSION@@</string>
+ 	<key>NSHighResolutionCapable</key>
+ 	<true/>
++	<key>NSRequiresAquaSystemAppearance</key>
++	<true/>
+ </dict>
+ </plist>
+-- 
+2.30.0.100.gf7cae41892
+

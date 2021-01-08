@@ -1,0 +1,36 @@
+From 37369733801b045cb07903af993b1883d4469094 Mon Sep 17 00:00:00 2001
+From: Stefan Haller <stefan@haller-berlin.de>
+Date: Wed, 18 Nov 2020 21:42:54 +0100
+Subject: [PATCH 12/18] git-gui: stage or unstage files with double-click or
+ Return
+
+When observing new users of git gui, I often see that they have trouble finding
+out how to stage or unstage files. It is not very intuitive that you have to
+click the small icon next to the file name for that. Many users try
+double-clicking a file to stage it, so support that.
+
+Pressing Return to stage files is something that I simply find convenient
+myself.
+
+Signed-off-by: Stefan Haller <stefan@haller-berlin.de>
+---
+ git-gui/git-gui.sh | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/git-gui/git-gui.sh b/git-gui/git-gui.sh
+index ee7ad2149a..c128bfa9ef 100755
+--- a/git-gui/git-gui.sh
++++ b/git-gui/git-gui.sh
+@@ -3978,6 +3978,9 @@ bind .   <$M1B-Key-Return> do_commit
+ bind .   <$M1B-Key-KP_Enter> do_commit
+ foreach i [list $ui_index $ui_workdir] {
+ 	bind $i <Button-1>       { toggle_or_diff click %W %x %y; break }
++	bind $i <Double-Button-1> { toggle_or_diff toggle %W %x %y; break }
++	bind $i <Key-Return>      { toggle_or_diff toggle %W %x %y; break }
++	bind $i <$M1B-Key-Return> { continue }
+ 	bind $i <$M1B-Button-1>  { add_one_to_selection %W %x %y; break }
+ 	bind $i <Shift-Button-1> { add_range_to_selection %W %x %y; break }
+ 	bind $i <Key-Up>         { toggle_or_diff up %W; break }
+-- 
+2.30.0.100.gf7cae41892
+

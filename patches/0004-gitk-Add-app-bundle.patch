@@ -1,7 +1,7 @@
-From 30c49b1f0feca0aae3f7b6eb218dd4fec8ca64b8 Mon Sep 17 00:00:00 2001
+From 7bf7040d911677a6adf6e707c35bacb85b05f97a Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Sun, 2 Jun 2013 08:52:14 +0200
-Subject: [PATCH 04/12] gitk: Add app bundle
+Subject: [PATCH 04/18] gitk: Add app bundle
 
 This way we get a nicer dock icon.
 ---
@@ -17,10 +17,10 @@ This way we get a nicer dock icon.
  create mode 100644 gitk-git/macosx/gitk.icns
 
 diff --git a/git-gui/git-gui.sh b/git-gui/git-gui.sh
-index 11e7b304d8..1f243f43ca 100755
+index fab89dac9d..8315f6676e 100755
 --- a/git-gui/git-gui.sh
 +++ b/git-gui/git-gui.sh
-@@ -2119,11 +2119,20 @@ proc do_gitk {revs {is_submodule false}} {
+@@ -2123,11 +2123,20 @@ proc do_gitk {revs {is_submodule false}} {
  	global current_diff_path file_states current_diff_side ui_index
  	global _gitdir _gitworktree
  
@@ -45,7 +45,7 @@ index 11e7b304d8..1f243f43ca 100755
  	if {$exe eq {}} {
  		error_popup [mc "Couldn't find gitk in PATH"]
  	} else {
-@@ -2163,7 +2172,7 @@ proc do_gitk {revs {is_submodule false}} {
+@@ -2167,7 +2176,7 @@ proc do_gitk {revs {is_submodule false}} {
  			unset env(GIT_DIR)
  			unset env(GIT_WORK_TREE)
  		}
@@ -2643,5 +2643,5 @@ literal 0
 HcmV?d00001
 
 -- 
-2.29.0.12.g8e3af0896f.dirty
+2.30.0.100.gf7cae41892
 

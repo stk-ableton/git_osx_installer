@@ -1,0 +1,102 @@
+From 009c7b27a1233a6d55ecb89c058b5ed853ba542c Mon Sep 17 00:00:00 2001
+From: Stefan Haller <stefan@haller-berlin.de>
+Date: Fri, 21 Mar 2014 15:19:50 +0100
+Subject: [PATCH 18/18] git-gui: Add simple mouse-over highlighting for diff
+ hunks
+
+This makes it a little easier to see where hunks start and end, in other words
+what would be affected when you choose "Stage hunk".
+---
+ git-gui/lib/diff.tcl   | 16 +++++++++++++++-
+ git-gui/lib/themed.tcl | 16 ++++++++++++++++
+ 2 files changed, 31 insertions(+), 1 deletion(-)
+
+diff --git a/git-gui/lib/diff.tcl b/git-gui/lib/diff.tcl
+index 871ad488c2..13c5d9d471 100644
+--- a/git-gui/lib/diff.tcl
++++ b/git-gui/lib/diff.tcl
+@@ -389,6 +389,9 @@ proc read_diff {fd conflict_size cont_info} {
+ 	global current_diff_queue
+ 	global diff_empty_count
+ 
++	set current_hunk_no 0
++	set current_hunk_tag ""
++
+ 	$ui_diff conf -state normal
+ 	while {[gets $fd line] >= 0} {
+ 		foreach {line markup} [parse_color_line $line] break
+@@ -405,7 +408,17 @@ proc read_diff {fd conflict_size cont_info} {
+ 
+ 		# -- Check for end of diff header (any hunk line will do this).
+ 		#
+-		if {[regexp {^@@+ } $line]} {set ::current_diff_inheader 0}
++		if {[regexp {^@@+ } $line]} {
++			set ::current_diff_inheader 0
++
++			set current_hunk_no [expr $current_hunk_no + 1]
++			set current_hunk_tag "hunk$current_hunk_no"
++			$ui_diff tag bind $current_hunk_tag <Enter> \
++				"$ui_diff tag conf $current_hunk_tag -background $color::hover_bg"
++			$ui_diff tag bind $current_hunk_tag <Leave> \
++				"$ui_diff tag conf $current_hunk_tag -background $color::text_bg"
++			$ui_diff tag lower $current_hunk_tag
++		}
+ 
+ 		# -- Automatically detect if this is a 3 way diff.
+ 		#
+@@ -520,6 +533,7 @@ proc read_diff {fd conflict_size cont_info} {
+ 			}
+ 			}
+ 		}
++		set tags "$tags $current_hunk_tag"
+ 		set mark [$ui_diff index "end - 1 line linestart"]
+ 		$ui_diff insert end $line $tags
+ 		if {[string index $line end] eq "\r"} {
+diff --git a/git-gui/lib/themed.tcl b/git-gui/lib/themed.tcl
+index f43d84e54f..38fd95c029 100644
+--- a/git-gui/lib/themed.tcl
++++ b/git-gui/lib/themed.tcl
+@@ -6,10 +6,12 @@ namespace eval color {
+ 	# Variable colors
+ 	# Preffered way to set widget colors is using add_option.
+ 	# In some cases, like with tags in_diff/in_sel, we use these colors.
++	variable text_bg				white
+ 	variable select_bg				lightgray
+ 	variable select_fg				black
+ 	variable inactive_select_bg		lightgray
+ 	variable inactive_select_fg		black
++	variable hover_bg				"#f3f3f3"
+ 
+ 	proc sync_with_theme {} {
+ 		set base_bg				[ttk::style lookup . -background]
+@@ -25,6 +27,8 @@ namespace eval color {
+ 		set color::select_fg $select_fg
+ 		set color::inactive_select_bg $inactive_select_bg
+ 		set color::inactive_select_fg $inactive_select_fg
++		set color::text_bg $text_bg
++		set color::hover_bg [make_hover_bg $text_bg]
+ 
+ 		proc add_option {key val} {
+ 			option add $key $val widgetDefault
+@@ -56,6 +60,18 @@ proc convert_rgb_to_gray {rgb} {
+ 	return [format "#%2.2X%2.2X%2.2X" $gray $gray $gray]
+ }
+ 
++proc make_hover_bg {bg} {
++	lassign [winfo rgb . $bg] r g b
++	set r [expr {$r / 256}]
++	set g [expr {$g / 256}]
++	set b [expr {$b / 256}]
++	set incr [expr {($r + $g + $b) / 3 > 128} ? -12 : 12]
++	incr r $incr
++	incr g $incr
++	incr b $incr
++	return [format "#%2.2X%2.2X%2.2X" $r $g $b]
++}
++
+ proc ttk_get_current_theme {} {
+ 	# Handle either current Tk or older versions of 8.5
+ 	if {[catch {set theme [ttk::style theme use]}]} {
+-- 
+2.30.0.100.gf7cae41892
+

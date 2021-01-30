@@ -1,7 +1,7 @@
 From ed69f6f4f69b34865a2998ab75d4d03b46b1ad98 Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Sun, 14 Nov 2010 11:47:35 +0100
-Subject: [PATCH 06/18] gitk: Avoid horizontal scrolling of the commit list on
+Subject: [PATCH 06/19] gitk: Avoid horizontal scrolling of the commit list on
  Mac
 
 With two-finger scrolling on a track pad, horizontal scrolling
@@ -30,5 +30,5 @@ index e8eaca731d..bacdbef29b 100755
          }
      }
 -- 
-2.30.0.100.gf7cae41892
+2.30.0
 

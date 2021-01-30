@@ -1,7 +1,7 @@
 From 7e71f4df4c0681a56226439d720793db4179e82b Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Tue, 25 Sep 2012 18:38:18 +0200
-Subject: [PATCH 01/18] gitk: Add options --select-file and --select-line
+Subject: [PATCH 01/19] gitk: Add options --select-file and --select-line
 
 These can be used in combination with --select-commit to jump to a given
 line in a patch on startup. (They don't have any effect when
@@ -133,5 +133,5 @@ index 23d9dd1fe0..cf70313dd8 100755
              set revtreeargscmd [string range $arg 10 end]
          }
 -- 
-2.30.0.100.gf7cae41892
+2.30.0
 

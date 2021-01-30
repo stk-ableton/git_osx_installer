@@ -1,7 +1,7 @@
-From a8d8d758411178ebf9889612f5c84464087a80a1 Mon Sep 17 00:00:00 2001
+From 749970ac15411c75b2b17b9410e6a7b51bb38d32 Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Thu, 19 Nov 2020 08:47:12 +0100
-Subject: [PATCH 14/18] git-gui: make the keyboard shortcuts for focusing views
+Subject: [PATCH 15/19] git-gui: make the keyboard shortcuts for focusing views
  work on Mac
 
 For some reason that I couldn't figure out, the Alt-1 (etc.) shortcuts don't
@@ -39,5 +39,5 @@ index 65b7ab7975..340f6a80b6 100755
  set file_lists_last_clicked($ui_index) {}
  set file_lists_last_clicked($ui_workdir) {}
 -- 
-2.30.0.100.gf7cae41892
+2.30.0
 

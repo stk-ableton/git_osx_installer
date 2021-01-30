@@ -1,7 +1,7 @@
-From f580f8b51e3002e3f07a4bf3ee150fac5bd18d7b Mon Sep 17 00:00:00 2001
+From 8e8ad111781b79f2735da226621cc17e24fcffa7 Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Mon, 12 Oct 2020 17:13:51 +0200
-Subject: [PATCH 10/18] git-gui: Use TCLTK_PATH for the Wish exectuable
+Subject: [PATCH 11/19] git-gui: Use TCLTK_PATH for the Wish exectuable
 
 This allows us to use a non-framework version of Tcl/Tk.
 
@@ -45,5 +45,5 @@ index 56c85a85c1..5d260dfa59 100644
  		>'$@'+/Contents/Info.plist && \
  	sed -e 's|@@gitexecdir@@|$(gitexecdir_SQ)|' \
 -- 
-2.30.0.100.gf7cae41892
+2.30.0
 

@@ -1,7 +1,7 @@
-From 37369733801b045cb07903af993b1883d4469094 Mon Sep 17 00:00:00 2001
+From 07582ccae24b38819b9af74588962bfc18098015 Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Wed, 18 Nov 2020 21:42:54 +0100
-Subject: [PATCH 12/18] git-gui: stage or unstage files with double-click or
+Subject: [PATCH 13/19] git-gui: stage or unstage files with double-click or
  Return
 
 When observing new users of git gui, I often see that they have trouble finding
@@ -32,5 +32,5 @@ index ee7ad2149a..c128bfa9ef 100755
  	bind $i <Shift-Button-1> { add_range_to_selection %W %x %y; break }
  	bind $i <Key-Up>         { toggle_or_diff up %W; break }
 -- 
-2.30.0.100.gf7cae41892
+2.30.0
 

@@ -1,7 +1,7 @@
-From 08bf39f7cad24a9f81a4736d33d1e61d714b41fe Mon Sep 17 00:00:00 2001
+From b522d07f747493c1718c06ef60f9f33d26d61e0a Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Sun, 22 Nov 2020 20:32:38 +0100
-Subject: [PATCH 16/18] git-gui: support "Select All" command in file lists
+Subject: [PATCH 17/19] git-gui: support "Select All" command in file lists
 
 Signed-off-by: Stefan Haller <stefan@haller-berlin.de>
 ---
@@ -57,5 +57,5 @@ index e4785749d2..16337bee74 100755
  unset i
  
 -- 
-2.30.0.100.gf7cae41892
+2.30.0
 

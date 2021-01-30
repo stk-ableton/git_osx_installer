@@ -1,7 +1,7 @@
-From e689f22dfe149e3be4e2d3ba9cbb0707bf6031b2 Mon Sep 17 00:00:00 2001
+From a2ad1507f689e71ee8de159e3b919cc1e9113f46 Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Thu, 19 Nov 2020 19:52:54 +0100
-Subject: [PATCH 13/18] git-gui: make the indentation prettier
+Subject: [PATCH 14/19] git-gui: make the indentation prettier
 
 We could have done this in the previous commit, but that would have made its
 diff harder to read.
@@ -36,5 +36,5 @@ index c128bfa9ef..65b7ab7975 100755
  unset i
  
 -- 
-2.30.0.100.gf7cae41892
+2.30.0
 

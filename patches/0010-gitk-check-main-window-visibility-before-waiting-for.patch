@@ -1,0 +1,32 @@
+From 6bd82175d9802c0395ceea81347771d863d3fb15 Mon Sep 17 00:00:00 2001
+From: Tobias Pietzsch <pietzsch@mycroft.speedport.ip>
+Date: Sat, 9 Jan 2021 23:14:08 +0100
+Subject: [PATCH 10/19] gitk: check main window visibility before waiting for
+ it to show
+
+If the main window is already visible when gitk waits for it to
+become visible, gitk hangs forever.
+This commit adds a check whether the window is already visible.
+See https://wiki.tcl-lang.org/page/tkwait+visibility
+
+Signed-off-by: Tobias Pietzsch <pietzsch@mycroft.speedport.ip>
+---
+ gitk-git/gitk | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gitk-git/gitk b/gitk-git/gitk
+index f022ab44f3..3f1ae44c1f 100755
+--- a/gitk-git/gitk
++++ b/gitk-git/gitk
+@@ -12706,7 +12706,7 @@ set worktree [gitworktree]
+ setcoords
+ makewindow
+ # wait for the window to become visible
+-tkwait visibility .
++if {![winfo viewable .]} {tkwait visibility .}
+ set_window_title
+ update
+ readrefs
+-- 
+2.30.0
+

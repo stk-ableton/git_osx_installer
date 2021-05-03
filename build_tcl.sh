@@ -16,7 +16,7 @@ TCL_DOWNLOAD_LOCATION=https://downloads.sourceforge.net/project/tcl/Tcl/$TCL_VER
 GIT_PREFIX=/usr/local/git
 
 OSX_VERSION=10.9
-TARGET_FLAGS="-mmacosx-version-min=$OSX_VERSION -DMACOSX_DEPLOYMENT_TARGET=$OSX_VERSION"
+TARGET_FLAGS="-arch x86_64 -arch arm64 -mmacosx-version-min=$OSX_VERSION -DMACOSX_DEPLOYMENT_TARGET=$OSX_VERSION"
 
 TCL_CONFIGURE_ARGS="--prefix=$GIT_PREFIX/tcl-tk --enable-threads --enable-64bit --disable-shared"
 TK_CONFIGURE_ARGS="$TCL_CONFIGURE_ARGS --with-tcl=$GIT_PREFIX/tcl-tk/lib --enable-aqua=yes --without-x --without-ssl"

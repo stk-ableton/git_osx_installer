@@ -31,8 +31,9 @@ OSX_CODE := $(shell echo "$(OSX_NAME)" | tr '[:upper:]' '[:lower:]' | tr ' ' '-'
 
 ARCH := Universal
 ARCH_CODE := universal
-ARCH_FLAGS_universal := -arch x86_64
+ARCH_FLAGS_universal := -arch x86_64 -arch arm64
 ARCH_FLAGS_x86_64 := -arch x86_64
+ARCH_FLAGS_arm64 := -arch arm64
 
 CFLAGS := $(TARGET_FLAGS) $(ARCH_FLAGS_${ARCH_CODE})
 LDFLAGS := $(TARGET_FLAGS) $(ARCH_FLAGS_${ARCH_CODE})

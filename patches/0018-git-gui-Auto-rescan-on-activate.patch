@@ -1,7 +1,7 @@
-From 3cc77a771e2fd4465f2503a4799d6461b533a345 Mon Sep 17 00:00:00 2001
+From f461a65587ff9c02096a1cab3b2918e98bf72a69 Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Tue, 3 Nov 2020 17:16:31 +0100
-Subject: [PATCH 18/19] git-gui: Auto-rescan on activate
+Subject: [PATCH 18/20] git-gui: Auto-rescan on activate
 
 Do an automatic rescan whenever the git-gui window receives focus. Most other
 GUI tools do this, and it's very convenient; no more pressing F5 manually.
@@ -51,5 +51,5 @@ index e43971bfa3..9e83db7510 100644
  		{b gui.pruneduringfetch {mc "Prune Tracking Branches During Fetch"}}
  		{b gui.matchtrackingbranch {mc "Match Tracking Branches"}}
 -- 
-2.30.0
+2.35.0.20.gda5c78a719
 

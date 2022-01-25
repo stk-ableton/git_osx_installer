@@ -1,7 +1,7 @@
-From 5a8eda3a7ec51617e097fa3e0a9513bdea46c3ed Mon Sep 17 00:00:00 2001
+From c54e154e7c3f1ddb5228095a73dc6cbe00874f8a Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Mon, 8 Nov 2010 10:35:34 +0100
-Subject: [PATCH 08/19] gitk: Add "First parent" checkbox
+Subject: [PATCH 08/20] gitk: Add "First parent" checkbox
 
 Sometimes it's desirable to see what changes were introduced by a
 merge commit, rather than how conflicts were resolved. This adds
@@ -104,5 +104,5 @@ index 6837e0df75..8d55bc20ad 100755
  
  set headbgcolor "#00ff00"
 -- 
-2.30.0
+2.35.0.20.gda5c78a719
 

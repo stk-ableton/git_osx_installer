@@ -1,7 +1,7 @@
-From c3f11fc8ceda59fab65221b3d21da3bb7c66faff Mon Sep 17 00:00:00 2001
+From 7dbfb7fce9db3a4e196efca44f960c808136ec0c Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Sun, 22 Nov 2020 15:54:55 +0100
-Subject: [PATCH 16/19] WIP Shift-up-down arrow
+Subject: [PATCH 16/20] WIP Shift-up-down arrow
 
 ---
  git-gui/git-gui.sh | 40 ++++++++++++++++++++++++++++++++++++++++
@@ -66,5 +66,5 @@ index 340f6a80b6..e4785749d2 100755
  unset i
  
 -- 
-2.30.0
+2.35.0.20.gda5c78a719
 

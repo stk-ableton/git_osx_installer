@@ -1,0 +1,41 @@
+From 3949c6ce223959348dc31fdb8511a484b84ff18f Mon Sep 17 00:00:00 2001
+From: Stefan Haller <stefan@haller-berlin.de>
+Date: Tue, 25 Jan 2022 19:05:21 +0100
+Subject: [PATCH 20/20] Skip validation of asciidoc files
+
+This seems to sometimes fail, and since we don't care about fixing broken
+documents, ignore it.
+---
+ Documentation/Makefile   | 2 ++
+ contrib/subtree/Makefile | 2 +-
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/Documentation/Makefile b/Documentation/Makefile
+index ed656db2ae..abd620a23f 100644
+--- a/Documentation/Makefile
++++ b/Documentation/Makefile
+@@ -187,6 +187,8 @@ ifdef GNU_ROFF
+ XMLTO_EXTRA += -m manpage-quote-apos.xsl
+ endif
+ 
++XMLTO_EXTRA += -x manpage.xsl
++
+ ifdef USE_ASCIIDOCTOR
+ ASCIIDOC = asciidoctor
+ ASCIIDOC_CONF =
+diff --git a/contrib/subtree/Makefile b/contrib/subtree/Makefile
+index 6fa7496bfd..d6a32b672a 100644
+--- a/contrib/subtree/Makefile
++++ b/contrib/subtree/Makefile
+@@ -25,7 +25,7 @@ ASCIIDOC_HTML    = xhtml11
+ ASCIIDOC_DOCBOOK = docbook
+ ASCIIDOC_EXTRA   =
+ XMLTO            = xmlto
+-XMLTO_EXTRA      =
++XMLTO_EXTRA      = --skip-validation
+ 
+ ifdef USE_ASCIIDOCTOR
+ ASCIIDOC         = asciidoctor
+-- 
+2.35.0.20.gda5c78a719
+

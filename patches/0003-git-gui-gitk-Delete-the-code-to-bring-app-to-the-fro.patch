@@ -1,7 +1,7 @@
-From 3d3dbae3fb9fb3ce13ed3ffae321a14cd46c994e Mon Sep 17 00:00:00 2001
+From 1413b2615ec1c8ae756699d2563b61dcad31a8d2 Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Tue, 13 Oct 2020 11:36:02 +0200
-Subject: [PATCH 03/19] git-gui/gitk: Delete the code to bring app to the front
+Subject: [PATCH 03/20] git-gui/gitk: Delete the code to bring app to the front
 
 With a modern enough Tcl/Tk this no longer seems to be needed.
 ---
@@ -55,5 +55,5 @@ index 7644a12697..e8eaca731d 100755
  if { [info exists ::env(GIT_TRACE)] } {
      unset ::env(GIT_TRACE)
 -- 
-2.30.0
+2.35.0.20.gda5c78a719
 

@@ -1,7 +1,7 @@
-From 6bd82175d9802c0395ceea81347771d863d3fb15 Mon Sep 17 00:00:00 2001
+From fb538afbcd01fd819c89f4d6fecd16fca5e4ec81 Mon Sep 17 00:00:00 2001
 From: Tobias Pietzsch <pietzsch@mycroft.speedport.ip>
 Date: Sat, 9 Jan 2021 23:14:08 +0100
-Subject: [PATCH 10/19] gitk: check main window visibility before waiting for
+Subject: [PATCH 10/20] gitk: check main window visibility before waiting for
  it to show
 
 If the main window is already visible when gitk waits for it to
@@ -28,5 +28,5 @@ index f022ab44f3..3f1ae44c1f 100755
  update
  readrefs
 -- 
-2.30.0
+2.35.0.20.gda5c78a719
 

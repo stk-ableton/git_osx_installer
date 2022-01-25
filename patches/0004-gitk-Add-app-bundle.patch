@@ -1,7 +1,7 @@
-From 7bf7040d911677a6adf6e707c35bacb85b05f97a Mon Sep 17 00:00:00 2001
+From eb09afeacf5058a3deadd77d2232badea2b06f56 Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Sun, 2 Jun 2013 08:52:14 +0200
-Subject: [PATCH 04/19] gitk: Add app bundle
+Subject: [PATCH 04/20] gitk: Add app bundle
 
 This way we get a nicer dock icon.
 ---
@@ -2643,5 +2643,5 @@ literal 0
 HcmV?d00001
 
 -- 
-2.30.0
+2.35.0.20.gda5c78a719
 

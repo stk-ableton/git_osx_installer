@@ -1,7 +1,7 @@
-From 4d7c2595ee7af60d6fce6885d1a1b182fc64c758 Mon Sep 17 00:00:00 2001
+From d434958f8214783176c024b353141ca6abc1f665 Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Wed, 18 Nov 2020 21:37:10 +0100
-Subject: [PATCH 12/19] git-gui: guard against "Application error" when using
+Subject: [PATCH 12/20] git-gui: guard against "Application error" when using
  arrow keys
 
 In rare cases, pressing up-arrow or down-arrow in the list of unstaged or staged
@@ -33,5 +33,5 @@ index 8315f6676e..ee7ad2149a 100755
  		if {$mode eq "toggle"} {
  			set col 0; set y 2
 -- 
-2.30.0
+2.35.0.20.gda5c78a719
 

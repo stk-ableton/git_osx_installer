@@ -112,7 +112,7 @@ $(BUILD_DIR)/git-$(VERSION)/osx-built: $(BUILD_DIR)/git-$(VERSION)/Makefile
 	[ -d $(DESTDIR)$(GIT_PREFIX) ] && $(SUDO) rm -rf $(DESTDIR) || echo ok
 	mkdir -p $(DESTDIR)$(GIT_PREFIX)
 	./build_tcl.sh && cp -r $(GIT_PREFIX)/tcl-tk $(DESTDIR)$(GIT_PREFIX)
-	cd $(BUILD_DIR)/git-$(VERSION); $(SUBMAKE) -j $(CORES) all html strip
+	cd $(BUILD_DIR)/git-$(VERSION); $(SUBMAKE) -j $(CORES) XML_CATALOG_FILES="$(XML_CATALOG_FILES)" all html strip
 	touch $@
 
 $(BUILD_DIR)/git-$(VERSION)/osx-built-keychain: $(BUILD_DIR)/git-$(VERSION)/Makefile

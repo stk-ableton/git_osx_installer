@@ -41,10 +41,11 @@ LDFLAGS := $(TARGET_FLAGS) $(ARCH_FLAGS_${ARCH_CODE})
 BAK_FOLDER := $(shell date +%s)
 PREFIX := /usr/local
 GIT_PREFIX := $(PREFIX)/git
+BREW_PREFIX := $(shell brew --prefix)
 
 DOWNLOAD_LOCATION=https://www.kernel.org/pub/software/scm/git
 
-XML_CATALOG_FILES=$(shell bin/find-file /usr/local/etc/xml/catalog)
+XML_CATALOG_FILES=$(shell bin/find-file $(BREW_PREFIX)/etc/xml/catalog)
 
 TCL_VERSION = 8.6
 
@@ -73,18 +74,18 @@ vars:
 
 .SECONDARY:
 
-/usr/local/etc/xml/catalog:
+$(BREW_PREFIX)/etc/xml/catalog:
 	brew install docbook
 
-/usr/local/bin/xmlto:
+$(BREW_PREFIX)/bin/xmlto:
 	brew install xmlto
 
-/usr/local/bin/asciidoc:
+$(BREW_PREFIX)/bin/asciidoc:
 	brew install asciidoc
 
 
-tmp/setup-verified: /usr/local/etc/xml/catalog /usr/local/bin/xmlto /usr/local/bin/asciidoc
-	grep -q docbook-xsl /usr/local/etc/xml/catalog && exit 0 || (echo "You need docbook-xsl installed to build docs; If it is already installed, uninstall and reinstall it"; brew install docbook-xsl)
+tmp/setup-verified: $(BREW_PREFIX)/etc/xml/catalog $(BREW_PREFIX)/bin/xmlto $(BREW_PREFIX)/bin/asciidoc
+	grep -q docbook-xsl $(BREW_PREFIX)/etc/xml/catalog && exit 0 || (echo "You need docbook-xsl installed to build docs; If it is already installed, uninstall and reinstall it"; brew install docbook-xsl)
 	touch	$@
 
 setup: tmp/setup-verified

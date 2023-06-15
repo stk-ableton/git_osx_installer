@@ -1,4 +1,4 @@
-From 72fe47e852365adc6a72aa474fd92c45b18459cf Mon Sep 17 00:00:00 2001
+From 904f91637852e32f16a1ed138a7c37b5027e4681 Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Sun, 14 Nov 2010 11:47:35 +0100
 Subject: [PATCH 06/20] gitk: Avoid horizontal scrolling of the commit list on
@@ -14,10 +14,10 @@ small price to pay.
  1 file changed, 3 insertions(+), 2 deletions(-)
 
 diff --git a/gitk-git/gitk b/gitk-git/gitk
-index e8eaca731d..bacdbef29b 100755
+index 4f778f766c..f1c28a79ed 100755
 --- a/gitk-git/gitk
 +++ b/gitk-git/gitk
-@@ -2577,8 +2577,9 @@ proc makewindow {} {
+@@ -2597,8 +2597,9 @@ proc makewindow {} {
                  allcanvs yview scroll $delta units
              }
              bindall <Shift-MouseWheel> {
@@ -30,5 +30,5 @@ index e8eaca731d..bacdbef29b 100755
          }
      }
 -- 
-2.35.0.20.gda5c78a719
+2.40.1
 

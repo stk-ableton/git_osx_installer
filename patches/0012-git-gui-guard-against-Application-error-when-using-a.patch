@@ -1,4 +1,4 @@
-From d434958f8214783176c024b353141ca6abc1f665 Mon Sep 17 00:00:00 2001
+From 6696a76b04346e0fd8f19af29772d6d50c13817f Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Wed, 18 Nov 2020 21:37:10 +0100
 Subject: [PATCH 12/20] git-gui: guard against "Application error" when using
@@ -33,5 +33,5 @@ index 8315f6676e..ee7ad2149a 100755
  		if {$mode eq "toggle"} {
  			set col 0; set y 2
 -- 
-2.35.0.20.gda5c78a719
+2.40.1
 

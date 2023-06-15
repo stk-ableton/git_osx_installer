@@ -1,4 +1,4 @@
-From 75b94c88693fbdca62b9a5aa37ca0e5f6d616209 Mon Sep 17 00:00:00 2001
+From d1e1805c2a255ccd508e12d3b8fe341a28b72c67 Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Wed, 18 Nov 2020 21:42:54 +0100
 Subject: [PATCH 13/20] git-gui: stage or unstage files with double-click or
@@ -32,5 +32,5 @@ index ee7ad2149a..c128bfa9ef 100755
  	bind $i <Shift-Button-1> { add_range_to_selection %W %x %y; break }
  	bind $i <Key-Up>         { toggle_or_diff up %W; break }
 -- 
-2.35.0.20.gda5c78a719
+2.40.1
 

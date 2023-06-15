@@ -1,4 +1,4 @@
-From 4b998b1ddf3dc379b7e61dd76a55e3f948b75bd3 Mon Sep 17 00:00:00 2001
+From 4c565e46db113a9e54a5832194cfa24de5dd76c8 Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Mon, 12 Oct 2020 17:10:02 +0200
 Subject: [PATCH 02/20] git-gui/gitk: Delete the code to set an icon
@@ -47,10 +47,10 @@ index 201524c34e..3dba934e6e 100755
  
  ######################################################################
 diff --git a/gitk-git/gitk b/gitk-git/gitk
-index cf70313dd8..7644a12697 100755
+index 64c7f76e33..edbe33a4ad 100755
 --- a/gitk-git/gitk
 +++ b/gitk-git/gitk
-@@ -12659,29 +12659,6 @@ if {[expr {[exec git rev-parse --is-inside-work-tree] == "true"}]} {
+@@ -12688,29 +12688,6 @@ if {[expr {[exec git rev-parse --is-inside-work-tree] == "true"}]} {
  set worktree [gitworktree]
  setcoords
  makewindow
@@ -81,5 +81,5 @@ index cf70313dd8..7644a12697 100755
  tkwait visibility .
  set_window_title
 -- 
-2.35.0.20.gda5c78a719
+2.40.1
 

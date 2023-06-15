@@ -1,4 +1,4 @@
-From 3ad9c9551757d4fea7dce7d4d39b69a86d48f9ba Mon Sep 17 00:00:00 2001
+From 755d0e78604f89f9f0d79a817c8809dae53cd328 Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Fri, 8 Jan 2021 15:28:19 +0100
 Subject: [PATCH 05/20] gitk: Turn off dark mode as long as we don't support it
@@ -21,5 +21,5 @@ index d88040b508..3dd7e451e4 100644
  </dict>
  </plist>
 -- 
-2.35.0.20.gda5c78a719
+2.40.1
 

@@ -1,4 +1,4 @@
-From f461a65587ff9c02096a1cab3b2918e98bf72a69 Mon Sep 17 00:00:00 2001
+From 911ec4f1e0342d1015c9afa15fbe1f7693d11ca5 Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Tue, 3 Nov 2020 17:16:31 +0100
 Subject: [PATCH 18/20] git-gui: Auto-rescan on activate
@@ -51,5 +51,5 @@ index e43971bfa3..9e83db7510 100644
  		{b gui.pruneduringfetch {mc "Prune Tracking Branches During Fetch"}}
  		{b gui.matchtrackingbranch {mc "Match Tracking Branches"}}
 -- 
-2.35.0.20.gda5c78a719
+2.40.1
 

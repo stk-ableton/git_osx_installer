@@ -1,4 +1,4 @@
-From 12cec7af4ccd590e2bcb865db88873514dbb5864 Mon Sep 17 00:00:00 2001
+From 79c41f3170f9ec8e33aac445961117988b296eae Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Thu, 19 Nov 2020 19:52:54 +0100
 Subject: [PATCH 14/20] git-gui: make the indentation prettier
@@ -36,5 +36,5 @@ index c128bfa9ef..65b7ab7975 100755
  unset i
  
 -- 
-2.35.0.20.gda5c78a719
+2.40.1
 

@@ -1,0 +1,100 @@
+diff --git a/unix/configure b/unix/configure
+index 4a18d1fa9..c41864a90 100755
+--- a/unix/configure
++++ b/unix/configure
+@@ -5565,15 +5565,15 @@ echo "${ECHO_T}$tcl_cv_cc_arch_x86_64" >&6
+ 
+ fi
+ ;;
+-		    arm64|arm64e)
+-			echo "$as_me:$LINENO: checking if compiler accepts -arch arm64e flag" >&5
+-echo $ECHO_N "checking if compiler accepts -arch arm64e flag... $ECHO_C" >&6
+-if test "${tcl_cv_cc_arch_arm64e+set}" = set; then
++		    arm64)
++			echo "$as_me:$LINENO: checking if compiler accepts -arch arm64 flag" >&5
++echo $ECHO_N "checking if compiler accepts -arch arm64 flag... $ECHO_C" >&6
++if test "${tcl_cv_cc_arch_arm64+set}" = set; then
+   echo $ECHO_N "(cached) $ECHO_C" >&6
+ else
+ 
+ 			    hold_cflags=$CFLAGS
+-			    CFLAGS="$CFLAGS -arch arm64e"
++			    CFLAGS="$CFLAGS -arch arm64"
+ 			    cat >conftest.$ac_ext <<_ACEOF
+ /* confdefs.h.  */
+ _ACEOF
+@@ -5611,22 +5611,22 @@ if { (eval echo "$as_me:$LINENO: \"$ac_link\"") >&5
+   ac_status=$?
+   echo "$as_me:$LINENO: \$? = $ac_status" >&5
+   (exit $ac_status); }; }; then
+-  tcl_cv_cc_arch_arm64e=yes
++  tcl_cv_cc_arch_arm64=yes
+ else
+   echo "$as_me: failed program was:" >&5
+ sed 's/^/| /' conftest.$ac_ext >&5
+ 
+-tcl_cv_cc_arch_arm64e=no
++tcl_cv_cc_arch_arm64=no
+ fi
+ rm -f conftest.err conftest.$ac_objext \
+       conftest$ac_exeext conftest.$ac_ext
+ 			    CFLAGS=$hold_cflags
+ fi
+-echo "$as_me:$LINENO: result: $tcl_cv_cc_arch_arm64e" >&5
+-echo "${ECHO_T}$tcl_cv_cc_arch_arm64e" >&6
+-			if test $tcl_cv_cc_arch_arm64e = yes; then
++echo "$as_me:$LINENO: result: $tcl_cv_cc_arch_arm64" >&5
++echo "${ECHO_T}$tcl_cv_cc_arch_arm64" >&6
++			if test $tcl_cv_cc_arch_arm64 = yes; then
+ 
+-			    CFLAGS="$CFLAGS -arch arm64e"
++			    CFLAGS="$CFLAGS -arch arm64"
+ 			    do64bit_ok=yes
+ 
+ fi
+@@ -5639,7 +5639,7 @@ echo "$as_me: WARNING: Don't know how enable 64-bit on architecture \`arch\`" >&
+ else
+ 
+ 		# Check for combined 32-bit and 64-bit fat build
+-		if echo "$CFLAGS " |grep -E -q -- '-arch (ppc64|x86_64|arm64e) ' \
++		if echo "$CFLAGS " |grep -E -q -- '-arch (ppc64|x86_64|arm64) ' \
+ 		    && echo "$CFLAGS " |grep -E -q -- '-arch (ppc|i386) '; then
+ 
+ 		    fat_32_64=yes
+diff --git a/unix/tcl.m4 b/unix/tcl.m4
+index 6d80d8bc9..885732d82 100644
+--- a/unix/tcl.m4
++++ b/unix/tcl.m4
+@@ -1541,16 +1541,16 @@ AC_DEFUN([SC_CONFIG_CFLAGS], [
+ 			    CFLAGS="$CFLAGS -arch x86_64"
+ 			    do64bit_ok=yes
+ 			]);;
+-		    arm64|arm64e)
+-			AC_CACHE_CHECK([if compiler accepts -arch arm64e flag],
+-				tcl_cv_cc_arch_arm64e, [
++		    arm64)
++			AC_CACHE_CHECK([if compiler accepts -arch arm64 flag],
++				tcl_cv_cc_arch_arm64, [
+ 			    hold_cflags=$CFLAGS
+-			    CFLAGS="$CFLAGS -arch arm64e"
++			    CFLAGS="$CFLAGS -arch arm64"
+ 			    AC_LINK_IFELSE([AC_LANG_PROGRAM([[]], [[]])],
+-				    [tcl_cv_cc_arch_arm64e=yes],[tcl_cv_cc_arch_arm64e=no])
++				    [tcl_cv_cc_arch_arm64=yes],[tcl_cv_cc_arch_arm64=no])
+ 			    CFLAGS=$hold_cflags])
+-			AS_IF([test $tcl_cv_cc_arch_arm64e = yes], [
+-			    CFLAGS="$CFLAGS -arch arm64e"
++			AS_IF([test $tcl_cv_cc_arch_arm64 = yes], [
++			    CFLAGS="$CFLAGS -arch arm64"
+ 			    do64bit_ok=yes
+ 			]);;
+ 		    *)
+@@ -1558,7 +1558,7 @@ AC_DEFUN([SC_CONFIG_CFLAGS], [
+ 		esac
+ 	    ], [
+ 		# Check for combined 32-bit and 64-bit fat build
+-		AS_IF([echo "$CFLAGS " |grep -E -q -- '-arch (ppc64|x86_64|arm64e) ' \
++		AS_IF([echo "$CFLAGS " |grep -E -q -- '-arch (ppc64|x86_64|arm64) ' \
+ 		    && echo "$CFLAGS " |grep -E -q -- '-arch (ppc|i386) '], [
+ 		    fat_32_64=yes])
+ 	    ])

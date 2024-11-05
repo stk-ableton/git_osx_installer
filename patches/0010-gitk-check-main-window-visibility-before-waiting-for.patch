@@ -1,7 +1,7 @@
-From 66dd308e083dc22ffca065ef110207c7808fd89e Mon Sep 17 00:00:00 2001
+From e3eb15568d5a792c603b836b175cf81c2a8841cc Mon Sep 17 00:00:00 2001
 From: Tobias Pietzsch <pietzsch@mycroft.speedport.ip>
 Date: Sat, 9 Jan 2021 23:14:08 +0100
-Subject: [PATCH 10/20] gitk: check main window visibility before waiting for
+Subject: [PATCH 10/21] gitk: check main window visibility before waiting for
  it to show
 
 If the main window is already visible when gitk waits for it to
@@ -15,7 +15,7 @@ Signed-off-by: Tobias Pietzsch <pietzsch@mycroft.speedport.ip>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/gitk-git/gitk b/gitk-git/gitk
-index df2608a741..e9cbcca941 100755
+index 105505d48f..c04845bb1c 100755
 --- a/gitk-git/gitk
 +++ b/gitk-git/gitk
 @@ -12735,7 +12735,7 @@ set worktree [gitworktree]
@@ -28,5 +28,5 @@ index df2608a741..e9cbcca941 100755
  update
  readrefs
 -- 
-2.40.1
+2.47.0
 

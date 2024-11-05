@@ -1,7 +1,7 @@
-From 79c41f3170f9ec8e33aac445961117988b296eae Mon Sep 17 00:00:00 2001
+From d8d226e092fe88c3080c64bff6e168d21bf36b90 Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Thu, 19 Nov 2020 19:52:54 +0100
-Subject: [PATCH 14/20] git-gui: make the indentation prettier
+Subject: [PATCH 14/21] git-gui: make the indentation prettier
 
 We could have done this in the previous commit, but that would have made its
 diff harder to read.
@@ -12,10 +12,10 @@ Signed-off-by: Stefan Haller <stefan@haller-berlin.de>
  1 file changed, 5 insertions(+), 5 deletions(-)
 
 diff --git a/git-gui/git-gui.sh b/git-gui/git-gui.sh
-index c128bfa9ef..65b7ab7975 100755
+index c056698669..a0150149ea 100755
 --- a/git-gui/git-gui.sh
 +++ b/git-gui/git-gui.sh
-@@ -3977,14 +3977,14 @@ bind .   <$M1B-Key-KP_Add> {show_more_context;break}
+@@ -3967,14 +3967,14 @@ bind .   <$M1B-Key-KP_Add> {show_more_context;break}
  bind .   <$M1B-Key-Return> do_commit
  bind .   <$M1B-Key-KP_Enter> do_commit
  foreach i [list $ui_index $ui_workdir] {
@@ -36,5 +36,5 @@ index c128bfa9ef..65b7ab7975 100755
  unset i
  
 -- 
-2.40.1
+2.47.0
 

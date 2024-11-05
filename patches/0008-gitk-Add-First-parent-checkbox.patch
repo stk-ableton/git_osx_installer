@@ -1,7 +1,7 @@
-From a8ac44a5b02d348ea16018e6e50d872fb9db6b02 Mon Sep 17 00:00:00 2001
+From 3dd52ee5b2538f30aa1dc891b4c65d778b7fe672 Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Mon, 8 Nov 2010 10:35:34 +0100
-Subject: [PATCH 08/20] gitk: Add "First parent" checkbox
+Subject: [PATCH 08/21] gitk: Add "First parent" checkbox
 
 Sometimes it's desirable to see what changes were introduced by a
 merge commit, rather than how conflicts were resolved. This adds
@@ -14,7 +14,7 @@ Signed-off-by: Stefan Haller <stefan@haller-berlin.de>
  1 file changed, 22 insertions(+), 3 deletions(-)
 
 diff --git a/gitk-git/gitk b/gitk-git/gitk
-index 10e80139d3..040c049548 100755
+index db11f854d5..ad12c81d8b 100755
 --- a/gitk-git/gitk
 +++ b/gitk-git/gitk
 @@ -2443,6 +2443,10 @@ proc makewindow {} {
@@ -104,5 +104,5 @@ index 10e80139d3..040c049548 100755
  
  set headbgcolor "#00ff00"
 -- 
-2.40.1
+2.47.0
 

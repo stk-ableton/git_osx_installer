@@ -1,7 +1,7 @@
-From cb6937d5064fdbd85c8004613daed7d1531e946a Mon Sep 17 00:00:00 2001
+From 94d78ab840e923c8280442c1c4c74885e08ab112 Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Sun, 22 Nov 2020 20:32:38 +0100
-Subject: [PATCH 17/20] git-gui: support "Select All" command in file lists
+Subject: [PATCH 17/21] git-gui: support "Select All" command in file lists
 
 Signed-off-by: Stefan Haller <stefan@haller-berlin.de>
 ---
@@ -9,10 +9,10 @@ Signed-off-by: Stefan Haller <stefan@haller-berlin.de>
  1 file changed, 22 insertions(+), 1 deletion(-)
 
 diff --git a/git-gui/git-gui.sh b/git-gui/git-gui.sh
-index e4785749d2..16337bee74 100755
+index d992323ca5..df4f3d08d4 100755
 --- a/git-gui/git-gui.sh
 +++ b/git-gui/git-gui.sh
-@@ -2725,6 +2725,25 @@ proc toggle_commit_type {} {
+@@ -2719,6 +2719,25 @@ proc toggle_commit_type {} {
  	do_select_commit_type
  }
  
@@ -38,7 +38,7 @@ index e4785749d2..16337bee74 100755
  ######################################################################
  ##
  ## ui construction
-@@ -2871,7 +2890,7 @@ menu .mbar.edit
+@@ -2865,7 +2884,7 @@ menu .mbar.edit
  	-accelerator Del
  .mbar.edit add separator
  .mbar.edit add command -label [mc "Select All"] \
@@ -47,7 +47,7 @@ index e4785749d2..16337bee74 100755
  	-accelerator $M1T-A
  
  # -- Branch Menu
-@@ -4025,6 +4044,8 @@ foreach i [list $ui_index $ui_workdir] {
+@@ -4015,6 +4034,8 @@ foreach i [list $ui_index $ui_workdir] {
  	bind $i <Key-Down>        { toggle_or_diff down %W; break }
  	bind $i <Shift-Key-Up>    { extend_or_shrink_range up %W; break }
  	bind $i <Shift-Key-Down>  { extend_or_shrink_range down %W; break }
@@ -57,5 +57,5 @@ index e4785749d2..16337bee74 100755
  unset i
  
 -- 
-2.40.1
+2.47.0
 

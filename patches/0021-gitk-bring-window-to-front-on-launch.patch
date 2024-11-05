@@ -1,0 +1,30 @@
+From 5417f9733a9d86278a488728c5eb8da619891228 Mon Sep 17 00:00:00 2001
+From: Stefan Haller <stefan@haller-berlin.de>
+Date: Tue, 5 Nov 2024 14:16:31 +0100
+Subject: [PATCH 21/21] gitk: bring window to front on launch
+
+This fixes gitk launching in the background on macOS Sequoia.
+
+Git-gui also calls this unconditionally on all platforms, so it can't be bad. :)
+---
+ gitk-git/gitk | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/gitk-git/gitk b/gitk-git/gitk
+index c04845bb1c..79df063c19 100755
+--- a/gitk-git/gitk
++++ b/gitk-git/gitk
+@@ -12771,9 +12771,7 @@ if {[info exists permviews]} {
+     }
+ }
+ 
+-if {[tk windowingsystem] eq "win32"} {
+-    focus -force .
+-}
++focus -force .
+ 
+ getcommits {}
+ 
+-- 
+2.47.0
+

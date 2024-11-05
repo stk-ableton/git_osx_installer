@@ -1,7 +1,7 @@
-From aedf68d462493a513caa55631041ae09ee3507c8 Mon Sep 17 00:00:00 2001
+From 6e544c8dbd362fa7420bcc479f3c851eb9234174 Mon Sep 17 00:00:00 2001
 From: Johannes Schindelin <johannes.schindelin@gmx.de>
 Date: Tue, 16 Feb 2016 16:42:06 +0100
-Subject: [PATCH 09/20] gitk: fix arrow keys in input fields with Tcl/Tk >= 8.6
+Subject: [PATCH 09/21] gitk: fix arrow keys in input fields with Tcl/Tk >= 8.6
 
 Tcl/Tk 8.6 introduced new events for the cursor left/right keys and
 apparently changed the behavior of the previous event.
@@ -17,7 +17,7 @@ Signed-off-by: Johannes Schindelin <johannes.schindelin@gmx.de>
  1 file changed, 9 insertions(+), 3 deletions(-)
 
 diff --git a/gitk-git/gitk b/gitk-git/gitk
-index 040c049548..df2608a741 100755
+index ad12c81d8b..105505d48f 100755
 --- a/gitk-git/gitk
 +++ b/gitk-git/gitk
 @@ -2114,7 +2114,7 @@ proc makewindow {} {
@@ -54,5 +54,5 @@ index 040c049548..df2608a741 100755
      set have_ttk [llength [info commands ::ttk::style]]
  }
 -- 
-2.40.1
+2.47.0
 

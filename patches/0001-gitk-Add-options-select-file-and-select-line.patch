@@ -1,7 +1,7 @@
-From 958add09c608bc5ca629f0fcca96cbfa3bc5db5e Mon Sep 17 00:00:00 2001
+From 284ded1964757c6cfceef7e6875cc4ade2830bb5 Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Tue, 25 Sep 2012 18:38:18 +0200
-Subject: [PATCH 01/20] gitk: Add options --select-file and --select-line
+Subject: [PATCH 01/21] gitk: Add options --select-file and --select-line
 
 These can be used in combination with --select-commit to jump to a given
 line in a patch on startup. (They don't have any effect when
@@ -44,7 +44,7 @@ easily be mapped to a key in vim or other editors.
  1 file changed, 28 insertions(+), 3 deletions(-)
 
 diff --git a/gitk-git/gitk b/gitk-git/gitk
-index df3ba2ea99..64c7f76e33 100755
+index 7a087f123d..8a380ed7e7 100755
 --- a/gitk-git/gitk
 +++ b/gitk-git/gitk
 @@ -488,12 +488,17 @@ proc stop_rev_list {view} {
@@ -133,5 +133,5 @@ index df3ba2ea99..64c7f76e33 100755
              set revtreeargscmd [string range $arg 10 end]
          }
 -- 
-2.40.1
+2.47.0
 

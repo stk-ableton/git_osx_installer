@@ -1,14 +1,14 @@
-From 76369d8c7e2ed1f475ffe10771d783c8d6ea3412 Mon Sep 17 00:00:00 2001
+From 0db5c1b2cc367fcb6b641401f5defffcae734d6d Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Wed, 18 Apr 2012 14:33:35 +0200
-Subject: [PATCH 07/20] gitk: Make svn revision numbers clickable links
+Subject: [PATCH 07/21] gitk: Make svn revision numbers clickable links
 
 ---
  gitk-git/gitk | 35 ++++++++++++++++++++++++++++++++---
  1 file changed, 32 insertions(+), 3 deletions(-)
 
 diff --git a/gitk-git/gitk b/gitk-git/gitk
-index f1c28a79ed..10e80139d3 100755
+index c45d5f6ec4..db11f854d5 100755
 --- a/gitk-git/gitk
 +++ b/gitk-git/gitk
 @@ -7081,8 +7081,26 @@ proc appendwithlinks {text tags} {
@@ -68,5 +68,5 @@ index f1c28a79ed..10e80139d3 100755
      if {[commitinview $id $curview]} {
          selectline [rowofcommit $id] $isnew
 -- 
-2.40.1
+2.47.0
 

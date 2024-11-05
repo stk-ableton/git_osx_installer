@@ -1,7 +1,7 @@
-From 3bbcb0121f4d09774f8c561dc2243986d4f49550 Mon Sep 17 00:00:00 2001
+From e5baf2e58000709e00e487e41ce9ebe0c8e0fa8d Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Thu, 19 Nov 2020 08:47:12 +0100
-Subject: [PATCH 15/20] git-gui: make the keyboard shortcuts for focusing views
+Subject: [PATCH 15/21] git-gui: make the keyboard shortcuts for focusing views
  work on Mac
 
 For some reason that I couldn't figure out, the Alt-1 (etc.) shortcuts don't
@@ -13,10 +13,10 @@ Signed-off-by: Stefan Haller <stefan@haller-berlin.de>
  1 file changed, 11 insertions(+), 4 deletions(-)
 
 diff --git a/git-gui/git-gui.sh b/git-gui/git-gui.sh
-index 65b7ab7975..340f6a80b6 100755
+index a0150149ea..595a8ba221 100755
 --- a/git-gui/git-gui.sh
 +++ b/git-gui/git-gui.sh
-@@ -3988,10 +3988,17 @@ foreach i [list $ui_index $ui_workdir] {
+@@ -3978,10 +3978,17 @@ foreach i [list $ui_index $ui_workdir] {
  }
  unset i
  
@@ -39,5 +39,5 @@ index 65b7ab7975..340f6a80b6 100755
  set file_lists_last_clicked($ui_index) {}
  set file_lists_last_clicked($ui_workdir) {}
 -- 
-2.40.1
+2.47.0
 

@@ -1,7 +1,7 @@
-From d7214e8a6d163d9a3f94d3b840bc0e48bdf4d0c5 Mon Sep 17 00:00:00 2001
+From 0a2eac4873ac4000b258fe33c8ff6cf46f70ca57 Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Tue, 25 Jan 2022 19:05:21 +0100
-Subject: [PATCH 20/20] Skip validation of asciidoc files
+Subject: [PATCH 20/21] Skip validation of asciidoc files
 
 This seems to sometimes fail, and since we don't care about fixing broken
 documents, ignore it.
@@ -11,10 +11,10 @@ documents, ignore it.
  2 files changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/Documentation/Makefile b/Documentation/Makefile
-index b629176d7d..ea5960e80c 100644
+index 0f55baa252..d9087c72e4 100644
 --- a/Documentation/Makefile
 +++ b/Documentation/Makefile
-@@ -193,6 +193,8 @@ MAN_BASE_URL = file://$(htmldir)/
+@@ -197,6 +197,8 @@ MAN_BASE_URL = file://$(htmldir)/
  endif
  XMLTO_EXTRA += --stringparam man.base.url.for.relative.links='$(MAN_BASE_URL)'
  
@@ -37,5 +37,5 @@ index 6fa7496bfd..d6a32b672a 100644
  ifdef USE_ASCIIDOCTOR
  ASCIIDOC         = asciidoctor
 -- 
-2.40.1
+2.47.0
 

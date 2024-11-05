@@ -1,7 +1,7 @@
-From 4c565e46db113a9e54a5832194cfa24de5dd76c8 Mon Sep 17 00:00:00 2001
+From e946f858a2f59aaf91ff5dcf6243ee04ae9221dd Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Mon, 12 Oct 2020 17:10:02 +0200
-Subject: [PATCH 02/20] git-gui/gitk: Delete the code to set an icon
+Subject: [PATCH 02/21] git-gui/gitk: Delete the code to set an icon
 
 When using our bundled Tcl/Tk 8.6.10, this interferes with the normal display
 of the app's icon. Not sure why this wasn't a problem before.
@@ -11,10 +11,10 @@ of the app's icon. Not sure why this wasn't a problem before.
  2 files changed, 48 deletions(-)
 
 diff --git a/git-gui/git-gui.sh b/git-gui/git-gui.sh
-index 201524c34e..3dba934e6e 100755
+index 8fe7538e72..4bcdb8ea3e 100755
 --- a/git-gui/git-gui.sh
 +++ b/git-gui/git-gui.sh
-@@ -740,31 +740,6 @@ if {[is_Windows]} {
+@@ -755,31 +755,6 @@ if {[is_Windows]} {
  	if {![info exists env(DISPLAY)]} {
  		set env(DISPLAY) :9999
  	}
@@ -47,7 +47,7 @@ index 201524c34e..3dba934e6e 100755
  
  ######################################################################
 diff --git a/gitk-git/gitk b/gitk-git/gitk
-index 64c7f76e33..edbe33a4ad 100755
+index 8a380ed7e7..395b43eb11 100755
 --- a/gitk-git/gitk
 +++ b/gitk-git/gitk
 @@ -12688,29 +12688,6 @@ if {[expr {[exec git rev-parse --is-inside-work-tree] == "true"}]} {
@@ -81,5 +81,5 @@ index 64c7f76e33..edbe33a4ad 100755
  tkwait visibility .
  set_window_title
 -- 
-2.40.1
+2.47.0
 

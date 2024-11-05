@@ -1,17 +1,17 @@
-From 75a34ed515cd17bd9a3ee12ccb75def3f0087028 Mon Sep 17 00:00:00 2001
+From 2263e809dd3704d1d14c7320ce821a8ad94f8d90 Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Sun, 22 Nov 2020 15:54:55 +0100
-Subject: [PATCH 16/20] WIP Shift-up-down arrow
+Subject: [PATCH 16/21] WIP Shift-up-down arrow
 
 ---
  git-gui/git-gui.sh | 40 ++++++++++++++++++++++++++++++++++++++++
  1 file changed, 40 insertions(+)
 
 diff --git a/git-gui/git-gui.sh b/git-gui/git-gui.sh
-index 340f6a80b6..e4785749d2 100755
+index 595a8ba221..d992323ca5 100755
 --- a/git-gui/git-gui.sh
 +++ b/git-gui/git-gui.sh
-@@ -2645,6 +2645,44 @@ proc add_range_to_selection {w x y} {
+@@ -2639,6 +2639,44 @@ proc add_range_to_selection {w x y} {
  	$w tag add in_sel $begin.0 [expr {$end + 1}].0
  }
  
@@ -56,7 +56,7 @@ index 340f6a80b6..e4785749d2 100755
  proc show_more_context {} {
  	global repo_config
  	if {$repo_config(gui.diffcontext) < 99} {
-@@ -3985,6 +4023,8 @@ foreach i [list $ui_index $ui_workdir] {
+@@ -3975,6 +4013,8 @@ foreach i [list $ui_index $ui_workdir] {
  	bind $i <Shift-Button-1>  { add_range_to_selection %W %x %y; break }
  	bind $i <Key-Up>          { toggle_or_diff up %W; break }
  	bind $i <Key-Down>        { toggle_or_diff down %W; break }
@@ -66,5 +66,5 @@ index 340f6a80b6..e4785749d2 100755
  unset i
  
 -- 
-2.40.1
+2.47.0
 

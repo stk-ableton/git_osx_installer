@@ -1,7 +1,7 @@
-From d970c167606e737a900ada6c775a70be33cb818b Mon Sep 17 00:00:00 2001
+From 6adaaf7e6e0e14d6c44d5d648c198c43592ae42e Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Tue, 13 Oct 2020 11:36:02 +0200
-Subject: [PATCH 03/20] git-gui/gitk: Delete the code to bring app to the front
+Subject: [PATCH 03/21] git-gui/gitk: Delete the code to bring app to the front
 
 With a modern enough Tcl/Tk this no longer seems to be needed.
 ---
@@ -10,10 +10,10 @@ With a modern enough Tcl/Tk this no longer seems to be needed.
  2 files changed, 23 deletions(-)
 
 diff --git a/git-gui/git-gui.sh b/git-gui/git-gui.sh
-index 3dba934e6e..fab89dac9d 100755
+index 4bcdb8ea3e..c969747fb0 100755
 --- a/git-gui/git-gui.sh
 +++ b/git-gui/git-gui.sh
-@@ -138,20 +138,6 @@ proc strcat {args} {
+@@ -264,20 +264,6 @@ proc strcat {args} {
  ::msgcat::mcload $oguimsg
  unset oguimsg
  
@@ -35,7 +35,7 @@ index 3dba934e6e..fab89dac9d 100755
  ##
  ## read only globals
 diff --git a/gitk-git/gitk b/gitk-git/gitk
-index edbe33a4ad..4f778f766c 100755
+index 395b43eb11..1febcafdd2 100755
 --- a/gitk-git/gitk
 +++ b/gitk-git/gitk
 @@ -12334,15 +12334,6 @@ if {[catch {package require Tk 8.4} err]} {
@@ -55,5 +55,5 @@ index edbe33a4ad..4f778f766c 100755
  if { [info exists ::env(GIT_TRACE)] } {
      unset ::env(GIT_TRACE)
 -- 
-2.40.1
+2.47.0
 

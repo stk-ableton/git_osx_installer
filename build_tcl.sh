@@ -4,7 +4,7 @@ set -e -o pipefail
 
 export MAKEFLAGS=
 
-TCL_VERSION=8.6.13
+TCL_VERSION=8.6.15
 TCL_MAJOR_VERSION=8.6
 
 TCL_SRC=tcl$TCL_VERSION-src.tar.gz
@@ -37,9 +37,6 @@ test -f build/$TK_SRC || \
 # Extract
 test -d $TCL_DIR || tar xzf build/$TCL_SRC -C build
 test -d $TK_DIR || tar xzf build/$TK_SRC -C build
-
-( cd $TCL_DIR && patch < ../../patches/tcl/453c27a88e9da3cb50fefe2c4a5fb7a7d09b8afc.diff )
-( cd $TK_DIR && patch < ../../patches/tk/bb5b2d66a7a1851f35c1fd18de186ebeafd18738.diff )
 
 # Configure, build, and install
 test -f $TCL_DIR/unix/Makefile || \

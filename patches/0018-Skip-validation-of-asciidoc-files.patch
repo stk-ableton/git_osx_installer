@@ -1,7 +1,7 @@
-From 0a2eac4873ac4000b258fe33c8ff6cf46f70ca57 Mon Sep 17 00:00:00 2001
+From 958dbd94536ad0d51d0331bc2f83736c8cc1ce39 Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Tue, 25 Jan 2022 19:05:21 +0100
-Subject: [PATCH 20/21] Skip validation of asciidoc files
+Subject: [PATCH 18/19] Skip validation of asciidoc files
 
 This seems to sometimes fail, and since we don't care about fixing broken
 documents, ignore it.
@@ -11,10 +11,10 @@ documents, ignore it.
  2 files changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/Documentation/Makefile b/Documentation/Makefile
-index 0f55baa252..d9087c72e4 100644
+index 671267a8ac..e1c1934e96 100644
 --- a/Documentation/Makefile
 +++ b/Documentation/Makefile
-@@ -197,6 +197,8 @@ MAN_BASE_URL = file://$(htmldir)/
+@@ -203,6 +203,8 @@ MAN_BASE_URL = file://$(htmldir)/
  endif
  XMLTO_EXTRA += --stringparam man.base.url.for.relative.links='$(MAN_BASE_URL)'
  
@@ -24,12 +24,12 @@ index 0f55baa252..d9087c72e4 100644
  ASCIIDOC = asciidoctor
  ASCIIDOC_CONF =
 diff --git a/contrib/subtree/Makefile b/contrib/subtree/Makefile
-index 6fa7496bfd..d6a32b672a 100644
+index c0c9f21cb7..19c7a49684 100644
 --- a/contrib/subtree/Makefile
 +++ b/contrib/subtree/Makefile
-@@ -25,7 +25,7 @@ ASCIIDOC_HTML    = xhtml11
- ASCIIDOC_DOCBOOK = docbook
+@@ -25,7 +25,7 @@ ASCIIDOC_DOCBOOK = docbook
  ASCIIDOC_EXTRA   =
+ ASCIIDOC_DEPS    = asciidoc.conf
  XMLTO            = xmlto
 -XMLTO_EXTRA      =
 +XMLTO_EXTRA      = --skip-validation
@@ -37,5 +37,5 @@ index 6fa7496bfd..d6a32b672a 100644
  ifdef USE_ASCIIDOCTOR
  ASCIIDOC         = asciidoctor
 -- 
-2.47.0
+2.48.1
 

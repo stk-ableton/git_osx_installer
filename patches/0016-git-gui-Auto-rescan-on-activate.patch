@@ -1,7 +1,7 @@
-From c78aaa7265d3e85e2b1b00ac6e0303417b12dbee Mon Sep 17 00:00:00 2001
+From 86f07e8c1987536359ee3d7f26a77af053013feb Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Tue, 3 Nov 2020 17:16:31 +0100
-Subject: [PATCH 18/21] git-gui: Auto-rescan on activate
+Subject: [PATCH 16/19] git-gui: Auto-rescan on activate
 
 Do an automatic rescan whenever the git-gui window receives focus. Most other
 GUI tools do this, and it's very convenient; no more pressing F5 manually.
@@ -16,7 +16,7 @@ Signed-off-by: Pratyush Yadav <me@yadavpratyush.com>
  2 files changed, 6 insertions(+)
 
 diff --git a/git-gui/git-gui.sh b/git-gui/git-gui.sh
-index df4f3d08d4..435b822a62 100755
+index eee76d6b97..7e1ea2dc30 100755
 --- a/git-gui/git-gui.sh
 +++ b/git-gui/git-gui.sh
 @@ -879,6 +879,7 @@ set font_descs {
@@ -27,7 +27,7 @@ index df4f3d08d4..435b822a62 100755
  
  ######################################################################
  ##
-@@ -4051,6 +4052,10 @@ if {[is_MacOSX]} {
+@@ -4052,6 +4053,10 @@ if {[is_MacOSX]} {
  	bind .   <Alt-Key-4> {focus $::ui_comm}
  }
  
@@ -51,5 +51,5 @@ index e43971bfa3..9e83db7510 100644
  		{b gui.pruneduringfetch {mc "Prune Tracking Branches During Fetch"}}
  		{b gui.matchtrackingbranch {mc "Match Tracking Branches"}}
 -- 
-2.47.0
+2.48.1
 

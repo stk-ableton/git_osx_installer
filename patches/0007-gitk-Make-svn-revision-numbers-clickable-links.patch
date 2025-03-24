@@ -1,17 +1,17 @@
-From 0db5c1b2cc367fcb6b641401f5defffcae734d6d Mon Sep 17 00:00:00 2001
+From 2103ad7f5d52bceafa7f1764b056139a8ff122d9 Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Wed, 18 Apr 2012 14:33:35 +0200
-Subject: [PATCH 07/21] gitk: Make svn revision numbers clickable links
+Subject: [PATCH 07/19] gitk: Make svn revision numbers clickable links
 
 ---
  gitk-git/gitk | 35 ++++++++++++++++++++++++++++++++---
  1 file changed, 32 insertions(+), 3 deletions(-)
 
 diff --git a/gitk-git/gitk b/gitk-git/gitk
-index c45d5f6ec4..db11f854d5 100755
+index fffd437ee5..61cb1f4177 100755
 --- a/gitk-git/gitk
 +++ b/gitk-git/gitk
-@@ -7081,8 +7081,26 @@ proc appendwithlinks {text tags} {
+@@ -7225,8 +7225,26 @@ proc appendwithlinks {text tags} {
  
      set start [$ctext index "end - 1c"]
      $ctext insert end $text $tags
@@ -40,7 +40,7 @@ index c45d5f6ec4..db11f854d5 100755
          set s [lindex $l 0]
          set e [lindex $l 1]
          set linkid [string range $text $s $e]
-@@ -7115,7 +7133,11 @@ proc setlink {id lk} {
+@@ -7259,7 +7277,11 @@ proc setlink {id lk} {
      }
  
      set known 0
@@ -53,7 +53,7 @@ index c45d5f6ec4..db11f854d5 100755
          set matches [longid $id]
          if {[llength $matches] > 0} {
              if {[llength $matches] > 1} return
-@@ -8987,6 +9009,13 @@ proc normalline {} {
+@@ -9136,6 +9158,13 @@ proc normalline {} {
  }
  
  proc selbyid {id {isnew 1}} {
@@ -68,5 +68,5 @@ index c45d5f6ec4..db11f854d5 100755
      if {[commitinview $id $curview]} {
          selectline [rowofcommit $id] $isnew
 -- 
-2.47.0
+2.48.1
 

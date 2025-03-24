@@ -1,7 +1,7 @@
-From 166401854f22a48bec92060c5374f4fa821c9377 Mon Sep 17 00:00:00 2001
+From 785d53317fe70ed8ea96ae1f772030f88dd882c1 Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Sun, 14 Nov 2010 11:47:35 +0100
-Subject: [PATCH 06/21] gitk: Avoid horizontal scrolling of the commit list on
+Subject: [PATCH 06/19] gitk: Avoid horizontal scrolling of the commit list on
  Mac
 
 With two-finger scrolling on a track pad, horizontal scrolling
@@ -14,10 +14,10 @@ small price to pay.
  1 file changed, 3 insertions(+), 2 deletions(-)
 
 diff --git a/gitk-git/gitk b/gitk-git/gitk
-index 1febcafdd2..c45d5f6ec4 100755
+index 5567b2aa08..fffd437ee5 100755
 --- a/gitk-git/gitk
 +++ b/gitk-git/gitk
-@@ -2597,8 +2597,9 @@ proc makewindow {} {
+@@ -2736,8 +2736,9 @@ proc makewindow {} {
                  allcanvs yview scroll $delta units
              }
              bindall <Shift-MouseWheel> {
@@ -30,5 +30,5 @@ index 1febcafdd2..c45d5f6ec4 100755
          }
      }
 -- 
-2.47.0
+2.48.1
 

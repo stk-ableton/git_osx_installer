@@ -1,7 +1,7 @@
-From 1b70791b6152caca590620f1984e32536aff6aaa Mon Sep 17 00:00:00 2001
+From f5f9f61c1413a12919af25bfba4d721392c1a8cb Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Fri, 21 Mar 2014 15:19:50 +0100
-Subject: [PATCH 19/21] git-gui: Add simple mouse-over highlighting for diff
+Subject: [PATCH 17/19] git-gui: Add simple mouse-over highlighting for diff
  hunks
 
 This makes it a little easier to see where hunks start and end, in other words
@@ -12,12 +12,12 @@ what would be affected when you choose "Stage hunk".
  2 files changed, 31 insertions(+), 1 deletion(-)
 
 diff --git a/git-gui/lib/diff.tcl b/git-gui/lib/diff.tcl
-index 871ad488c2..13c5d9d471 100644
+index d657bfec05..d01e471304 100644
 --- a/git-gui/lib/diff.tcl
 +++ b/git-gui/lib/diff.tcl
-@@ -389,6 +389,9 @@ proc read_diff {fd conflict_size cont_info} {
+@@ -377,6 +377,9 @@ proc read_diff {fd conflict_size cont_info} {
+ 	global is_3way_diff is_conflict_diff current_diff_header
  	global current_diff_queue
- 	global diff_empty_count
  
 +	set current_hunk_no 0
 +	set current_hunk_tag ""
@@ -25,7 +25,7 @@ index 871ad488c2..13c5d9d471 100644
  	$ui_diff conf -state normal
  	while {[gets $fd line] >= 0} {
  		foreach {line markup} [parse_color_line $line] break
-@@ -405,7 +408,17 @@ proc read_diff {fd conflict_size cont_info} {
+@@ -393,7 +396,17 @@ proc read_diff {fd conflict_size cont_info} {
  
  		# -- Check for end of diff header (any hunk line will do this).
  		#
@@ -44,7 +44,7 @@ index 871ad488c2..13c5d9d471 100644
  
  		# -- Automatically detect if this is a 3 way diff.
  		#
-@@ -520,6 +533,7 @@ proc read_diff {fd conflict_size cont_info} {
+@@ -508,6 +521,7 @@ proc read_diff {fd conflict_size cont_info} {
  			}
  			}
  		}
@@ -98,5 +98,5 @@ index f43d84e54f..38fd95c029 100644
  	# Handle either current Tk or older versions of 8.5
  	if {[catch {set theme [ttk::style theme use]}]} {
 -- 
-2.47.0
+2.48.1
 

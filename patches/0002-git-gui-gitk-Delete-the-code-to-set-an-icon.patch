@@ -1,17 +1,17 @@
-From e946f858a2f59aaf91ff5dcf6243ee04ae9221dd Mon Sep 17 00:00:00 2001
+From c7e42bbde6b6ef22b252c37c8c9adebedd3103d5 Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Mon, 12 Oct 2020 17:10:02 +0200
-Subject: [PATCH 02/21] git-gui/gitk: Delete the code to set an icon
+Subject: [PATCH 02/19] git-gui/gitk: Delete the code to set an icon
 
 When using our bundled Tcl/Tk 8.6.10, this interferes with the normal display
 of the app's icon. Not sure why this wasn't a problem before.
 ---
  git-gui/git-gui.sh | 25 -------------------------
- gitk-git/gitk      | 23 -----------------------
- 2 files changed, 48 deletions(-)
+ gitk-git/gitk      | 24 ------------------------
+ 2 files changed, 49 deletions(-)
 
 diff --git a/git-gui/git-gui.sh b/git-gui/git-gui.sh
-index 8fe7538e72..4bcdb8ea3e 100755
+index 887d6d596c..d0c56dc4f5 100755
 --- a/git-gui/git-gui.sh
 +++ b/git-gui/git-gui.sh
 @@ -755,31 +755,6 @@ if {[is_Windows]} {
@@ -47,39 +47,40 @@ index 8fe7538e72..4bcdb8ea3e 100755
  
  ######################################################################
 diff --git a/gitk-git/gitk b/gitk-git/gitk
-index 8a380ed7e7..395b43eb11 100755
+index 54e92b02f5..58ceabc15d 100755
 --- a/gitk-git/gitk
 +++ b/gitk-git/gitk
-@@ -12688,29 +12688,6 @@ if {[expr {[exec git rev-parse --is-inside-work-tree] == "true"}]} {
- set worktree [gitworktree]
- setcoords
+@@ -12869,30 +12869,6 @@ setcoords
  makewindow
--catch {
--    image create photo gitlogo      -width 16 -height 16
+ if {$::tcl_platform(platform) eq {windows} && [file exists $gitk_prefix/etc/git.ico]} {
+     wm iconbitmap . -default $gitk_prefix/etc/git.ico
+-} else {
+-    catch {
+-        image create photo gitlogo      -width 16 -height 16
 -
--    image create photo gitlogominus -width  4 -height  2
--    gitlogominus put #C00000 -to 0 0 4 2
--    gitlogo copy gitlogominus -to  1 5
--    gitlogo copy gitlogominus -to  6 5
--    gitlogo copy gitlogominus -to 11 5
--    image delete gitlogominus
+-        image create photo gitlogominus -width  4 -height  2
+-        gitlogominus put #C00000 -to 0 0 4 2
+-        gitlogo copy gitlogominus -to  1 5
+-        gitlogo copy gitlogominus -to  6 5
+-        gitlogo copy gitlogominus -to 11 5
+-        image delete gitlogominus
 -
--    image create photo gitlogoplus  -width  4 -height  4
--    gitlogoplus  put #008000 -to 1 0 3 4
--    gitlogoplus  put #008000 -to 0 1 4 3
--    gitlogo copy gitlogoplus  -to  1 9
--    gitlogo copy gitlogoplus  -to  6 9
--    gitlogo copy gitlogoplus  -to 11 9
--    image delete gitlogoplus
+-        image create photo gitlogoplus  -width  4 -height  4
+-        gitlogoplus  put #008000 -to 1 0 3 4
+-        gitlogoplus  put #008000 -to 0 1 4 3
+-        gitlogo copy gitlogoplus  -to  1 9
+-        gitlogo copy gitlogoplus  -to  6 9
+-        gitlogo copy gitlogoplus  -to 11 9
+-        image delete gitlogoplus
 -
--    image create photo gitlogo32    -width 32 -height 32
--    gitlogo32 copy gitlogo -zoom 2 2
+-        image create photo gitlogo32    -width 32 -height 32
+-        gitlogo32 copy gitlogo -zoom 2 2
 -
--    wm iconphoto . -default gitlogo gitlogo32
--}
+-        wm iconphoto . -default gitlogo gitlogo32
+-    }
+ }
  # wait for the window to become visible
- tkwait visibility .
- set_window_title
+ if {![winfo viewable .]} {tkwait visibility .}
 -- 
-2.47.0
+2.48.1
 

@@ -82,5 +82,5 @@ index 54e92b02f5..58ceabc15d 100755
  # wait for the window to become visible
  if {![winfo viewable .]} {tkwait visibility .}
 -- 
-2.48.1
+2.49.0.22.g7139c3ce93
 

@@ -1,4 +1,4 @@
-From 7faea95f648a1ee9f8f59308ce4a0ddb3a9fc23d Mon Sep 17 00:00:00 2001
+From ebd10ba311b6d1975a7da994e931b57399417526 Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Wed, 18 Nov 2020 21:42:54 +0100
 Subject: [PATCH 11/19] git-gui: stage or unstage files with double-click or
@@ -18,10 +18,10 @@ Signed-off-by: Stefan Haller <stefan@haller-berlin.de>
  1 file changed, 3 insertions(+)
 
 diff --git a/git-gui/git-gui.sh b/git-gui/git-gui.sh
-index 155d9f2510..9171895ea6 100755
+index d998858ace..682c0fd031 100755
 --- a/git-gui/git-gui.sh
 +++ b/git-gui/git-gui.sh
-@@ -3969,6 +3969,9 @@ bind .   <$M1B-Key-Return> do_commit
+@@ -3983,6 +3983,9 @@ bind .   <$M1B-Key-Return> do_commit
  bind .   <$M1B-Key-KP_Enter> do_commit
  foreach i [list $ui_index $ui_workdir] {
  	bind $i <Button-1>       { toggle_or_diff click %W %x %y; break }
@@ -32,5 +32,5 @@ index 155d9f2510..9171895ea6 100755
  	bind $i <Shift-Button-1> { add_range_to_selection %W %x %y; break }
  	bind $i <Key-Up>         { toggle_or_diff up %W; break }
 -- 
-2.48.1
+2.49.0.22.g7139c3ce93
 

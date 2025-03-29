@@ -1,4 +1,4 @@
-From a2b8dc970375d7d16d03f001d0109e8d2eff03b4 Mon Sep 17 00:00:00 2001
+From efa7407543466d08710e1d9a30bfde2b47cb65ba Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Tue, 5 Nov 2024 14:16:31 +0100
 Subject: [PATCH 19/19] gitk: bring window to front on launch
@@ -11,10 +11,10 @@ Git-gui also calls this unconditionally on all platforms, so it can't be bad. :)
  1 file changed, 1 insertion(+), 3 deletions(-)
 
 diff --git a/gitk-git/gitk b/gitk-git/gitk
-index c4aeec8d8e..22ed804f1a 100755
+index 08b5ba6455..a9bc603b4e 100755
 --- a/gitk-git/gitk
 +++ b/gitk-git/gitk
-@@ -12947,9 +12947,7 @@ if {[info exists permviews]} {
+@@ -12958,9 +12958,7 @@ if {[info exists permviews]} {
      }
  }
  
@@ -26,5 +26,5 @@ index c4aeec8d8e..22ed804f1a 100755
  getcommits {}
  
 -- 
-2.48.1
+2.49.0.22.g7139c3ce93
 

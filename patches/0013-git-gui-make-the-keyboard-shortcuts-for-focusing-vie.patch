@@ -1,4 +1,4 @@
-From 46be96df83f233fde82241fe8432030bfd435927 Mon Sep 17 00:00:00 2001
+From c58bb51410a8e94c65e7374486b9dba271f46932 Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Thu, 19 Nov 2020 08:47:12 +0100
 Subject: [PATCH 13/19] git-gui: make the keyboard shortcuts for focusing views
@@ -13,10 +13,10 @@ Signed-off-by: Stefan Haller <stefan@haller-berlin.de>
  1 file changed, 11 insertions(+), 4 deletions(-)
 
 diff --git a/git-gui/git-gui.sh b/git-gui/git-gui.sh
-index 8425ac30dd..4d1204a78d 100755
+index 9c33c56c26..681c3cced8 100755
 --- a/git-gui/git-gui.sh
 +++ b/git-gui/git-gui.sh
-@@ -3979,10 +3979,17 @@ foreach i [list $ui_index $ui_workdir] {
+@@ -3993,10 +3993,17 @@ foreach i [list $ui_index $ui_workdir] {
  }
  unset i
  
@@ -39,5 +39,5 @@ index 8425ac30dd..4d1204a78d 100755
  set file_lists_last_clicked($ui_index) {}
  set file_lists_last_clicked($ui_workdir) {}
 -- 
-2.48.1
+2.49.0.22.g7139c3ce93
 

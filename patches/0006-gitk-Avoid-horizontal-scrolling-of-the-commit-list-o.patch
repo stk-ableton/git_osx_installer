@@ -1,4 +1,4 @@
-From 785d53317fe70ed8ea96ae1f772030f88dd882c1 Mon Sep 17 00:00:00 2001
+From 4cf4f521779d1c1d46a0e9e4861cf2370e8099d2 Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Sun, 14 Nov 2010 11:47:35 +0100
 Subject: [PATCH 06/19] gitk: Avoid horizontal scrolling of the commit list on
@@ -14,7 +14,7 @@ small price to pay.
  1 file changed, 3 insertions(+), 2 deletions(-)
 
 diff --git a/gitk-git/gitk b/gitk-git/gitk
-index 5567b2aa08..fffd437ee5 100755
+index ed04af4223..e6753ac9d1 100755
 --- a/gitk-git/gitk
 +++ b/gitk-git/gitk
 @@ -2736,8 +2736,9 @@ proc makewindow {} {
@@ -30,5 +30,5 @@ index 5567b2aa08..fffd437ee5 100755
          }
      }
 -- 
-2.48.1
+2.49.0.22.g7139c3ce93
 

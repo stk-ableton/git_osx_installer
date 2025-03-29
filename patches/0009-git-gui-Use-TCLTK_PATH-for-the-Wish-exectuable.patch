@@ -1,4 +1,4 @@
-From 486aa2529ba34b6e28875d7dc534127195c34aba Mon Sep 17 00:00:00 2001
+From 2535af7d7c73f5f80a9f5382122bc73d719b9083 Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Mon, 12 Oct 2020 17:13:51 +0200
 Subject: [PATCH 09/19] git-gui: Use TCLTK_PATH for the Wish exectuable
@@ -45,5 +45,5 @@ index 6c5a12bc32..c7d2a86f3f 100644
  		>'$@'+/Contents/Info.plist && \
  	sed -e 's|@@gitexecdir@@|$(gitexecdir_SQ)|' \
 -- 
-2.48.1
+2.49.0.22.g7139c3ce93
 

@@ -1,4 +1,4 @@
-From 253f26b8c4f4a0fe0fc3064ab3555a699b8f2a51 Mon Sep 17 00:00:00 2001
+From 4a1ddaf190794a26a2040fcce45c299bd064b538 Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Mon, 8 Nov 2010 10:35:34 +0100
 Subject: [PATCH 08/19] gitk: Add "First parent" checkbox
@@ -14,7 +14,7 @@ Signed-off-by: Stefan Haller <stefan@haller-berlin.de>
  1 file changed, 22 insertions(+), 3 deletions(-)
 
 diff --git a/gitk-git/gitk b/gitk-git/gitk
-index 61cb1f4177..c4aeec8d8e 100755
+index a782bd159c..08b5ba6455 100755
 --- a/gitk-git/gitk
 +++ b/gitk-git/gitk
 @@ -2582,6 +2582,10 @@ proc makewindow {} {
@@ -95,7 +95,7 @@ index 61cb1f4177..c4aeec8d8e 100755
      if {$limitdiffs && $vfilelimit($curview) ne {}} {
          set cmd [concat $cmd -- $vfilelimit($curview)]
      }
-@@ -12654,6 +12672,7 @@ set diffcontext 3
+@@ -12665,6 +12683,7 @@ set diffcontext 3
  set mergecolors {red blue "#00ff00" purple brown "#009090" magenta "#808000" "#009000" "#ff0080" cyan "#b07070" "#70b0f0" "#70f0b0" "#f0b070" "#ff70b0"}
  set ignorespace 0
  set worddiff ""
@@ -104,5 +104,5 @@ index 61cb1f4177..c4aeec8d8e 100755
  
  set headbgcolor "#00ff00"
 -- 
-2.48.1
+2.49.0.22.g7139c3ce93
 

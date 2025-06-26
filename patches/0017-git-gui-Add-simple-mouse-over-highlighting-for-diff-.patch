@@ -1,4 +1,4 @@
-From 0b707fa2663720c849766788437a1f500d81168a Mon Sep 17 00:00:00 2001
+From e4a5a2317d317cf1610f785f987bd03795f39165 Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Fri, 21 Mar 2014 15:19:50 +0100
 Subject: [PATCH 17/19] git-gui: Add simple mouse-over highlighting for diff
@@ -98,5 +98,5 @@ index f43d84e54f..38fd95c029 100644
  	# Handle either current Tk or older versions of 8.5
  	if {[catch {set theme [ttk::style theme use]}]} {
 -- 
-2.49.0.22.g7139c3ce93
+2.50.0
 

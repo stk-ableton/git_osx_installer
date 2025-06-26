@@ -1,4 +1,4 @@
-From 67ab65a25b8f4a809a98e03ada29751157ed3c08 Mon Sep 17 00:00:00 2001
+From dbca028987adb2aae71bb62617abe9c512477ed9 Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Tue, 3 Nov 2020 17:16:31 +0100
 Subject: [PATCH 16/19] git-gui: Auto-rescan on activate
@@ -16,10 +16,10 @@ Signed-off-by: Pratyush Yadav <me@yadavpratyush.com>
  2 files changed, 6 insertions(+)
 
 diff --git a/git-gui/git-gui.sh b/git-gui/git-gui.sh
-index 9316623728..ea1a57b10f 100755
+index 5b2f40191b..52fe11def9 100755
 --- a/git-gui/git-gui.sh
 +++ b/git-gui/git-gui.sh
-@@ -893,6 +893,7 @@ set font_descs {
+@@ -901,6 +901,7 @@ set font_descs {
  }
  set default_config(gui.stageuntracked) ask
  set default_config(gui.displayuntracked) true
@@ -27,7 +27,7 @@ index 9316623728..ea1a57b10f 100755
  
  ######################################################################
  ##
-@@ -4066,6 +4067,10 @@ if {[is_MacOSX]} {
+@@ -4074,6 +4075,10 @@ if {[is_MacOSX]} {
  	bind .   <Alt-Key-4> {focus $::ui_comm}
  }
  
@@ -51,5 +51,5 @@ index e43971bfa3..9e83db7510 100644
  		{b gui.pruneduringfetch {mc "Prune Tracking Branches During Fetch"}}
  		{b gui.matchtrackingbranch {mc "Match Tracking Branches"}}
 -- 
-2.49.0.22.g7139c3ce93
+2.50.0
 

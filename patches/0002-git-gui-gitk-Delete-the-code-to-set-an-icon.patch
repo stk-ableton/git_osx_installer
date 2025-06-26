@@ -1,4 +1,4 @@
-From c7e42bbde6b6ef22b252c37c8c9adebedd3103d5 Mon Sep 17 00:00:00 2001
+From 0391df48f098bccc144bf78a0d926cd7c7854803 Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Mon, 12 Oct 2020 17:10:02 +0200
 Subject: [PATCH 02/19] git-gui/gitk: Delete the code to set an icon
@@ -11,7 +11,7 @@ of the app's icon. Not sure why this wasn't a problem before.
  2 files changed, 49 deletions(-)
 
 diff --git a/git-gui/git-gui.sh b/git-gui/git-gui.sh
-index 887d6d596c..d0c56dc4f5 100755
+index 28572c889c..836f8cba89 100755
 --- a/git-gui/git-gui.sh
 +++ b/git-gui/git-gui.sh
 @@ -755,31 +755,6 @@ if {[is_Windows]} {
@@ -47,10 +47,10 @@ index 887d6d596c..d0c56dc4f5 100755
  
  ######################################################################
 diff --git a/gitk-git/gitk b/gitk-git/gitk
-index 54e92b02f5..58ceabc15d 100755
+index 2e2ddc72fd..80bf4da2cb 100755
 --- a/gitk-git/gitk
 +++ b/gitk-git/gitk
-@@ -12869,30 +12869,6 @@ setcoords
+@@ -12836,30 +12836,6 @@ setcoords
  makewindow
  if {$::tcl_platform(platform) eq {windows} && [file exists $gitk_prefix/etc/git.ico]} {
      wm iconbitmap . -default $gitk_prefix/etc/git.ico
@@ -82,5 +82,5 @@ index 54e92b02f5..58ceabc15d 100755
  # wait for the window to become visible
  if {![winfo viewable .]} {tkwait visibility .}
 -- 
-2.49.0.22.g7139c3ce93
+2.50.0
 

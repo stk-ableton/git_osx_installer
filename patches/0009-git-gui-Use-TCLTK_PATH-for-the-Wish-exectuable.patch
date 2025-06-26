@@ -1,4 +1,4 @@
-From 2535af7d7c73f5f80a9f5382122bc73d719b9083 Mon Sep 17 00:00:00 2001
+From be5ffbf7a8fadbb11dc14e562ccd599a7dbf098b Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Mon, 12 Oct 2020 17:13:51 +0200
 Subject: [PATCH 09/19] git-gui: Use TCLTK_PATH for the Wish exectuable
@@ -8,42 +8,55 @@ This allows us to use a non-framework version of Tcl/Tk.
 This probably doesn't work if you don't pass TCLTK_PATH, but I'm not interested
 in fixing this.
 ---
- git-gui/Makefile | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ git-gui/Makefile                  | 2 +-
+ git-gui/generate-macos-app.sh     | 4 ++--
+ git-gui/generate-macos-wrapper.sh | 2 +-
+ 3 files changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/git-gui/Makefile b/git-gui/Makefile
-index 6c5a12bc32..c7d2a86f3f 100644
+index 8672dd2d6b..6ad194ca13 100644
 --- a/git-gui/Makefile
 +++ b/git-gui/Makefile
-@@ -168,7 +168,7 @@ git-gui: GIT-VERSION-FILE GIT-GUI-VARS
- 	echo '	'echo \'git-gui version '$(GITGUI_VERSION)'\' >>$@+ && \
- 	echo else >>$@+ && \
- 	echo '	libdir="$${GIT_GUI_LIB_DIR:-$(libdir_SQ)}"' >>$@+ && \
--	echo '	'exec \"'$$libdir/Git Gui.app/Contents/MacOS/$(subst \,,$(TKEXECUTABLE))'\" \
-+	echo '	'exec \"'$$libdir/Git Gui.app/Contents/MacOS/Wish'\" \
- 		'"$$0" "$$@"' >>$@+ && \
- 	echo fi >>$@+ && \
- 	chmod +x $@+ && \
-@@ -178,15 +178,15 @@ Git\ Gui.app: GIT-VERSION-FILE GIT-GUI-VARS \
+@@ -159,7 +159,7 @@ Git\ Gui.app: GIT-VERSION-FILE GIT-GUI-BUILD-OPTIONS \
  		macosx/Info.plist \
  		macosx/git-gui.icns \
  		macosx/AppMain.tcl \
--		$(TKFRAMEWORK)/Contents/MacOS/$(TKEXECUTABLE)
+-		$(TKEXECUTABLE)
 +		$(TCLTK_PATH)
- 	$(QUIET_GEN)rm -rf '$@' '$@'+ && \
- 	mkdir -p '$@'+/Contents/MacOS && \
- 	mkdir -p '$@'+/Contents/Resources/Scripts && \
--	cp '$(subst ','\'',$(subst \,,$(TKFRAMEWORK)/Contents/MacOS/$(TKEXECUTABLE)))' \
--		'$@'+/Contents/MacOS && \
-+	cp '$(subst ','\'',$(subst \,,$(TCLTK_PATH)))' \
-+		'$@'+/Contents/MacOS/Wish && \
- 	cp macosx/git-gui.icns '$@'+/Contents/Resources && \
- 	sed -e 's/@@GITGUI_VERSION@@/$(GITGUI_VERSION)/g' \
--		-e 's/@@GITGUI_TKEXECUTABLE@@/$(TKEXECUTABLE)/g' \
-+		-e 's/@@GITGUI_TKEXECUTABLE@@/Wish/g' \
- 		macosx/Info.plist \
- 		>'$@'+/Contents/Info.plist && \
- 	sed -e 's|@@gitexecdir@@|$(gitexecdir_SQ)|' \
+ 	$(QUIET_GEN)$(SHELL_PATH) generate-macos-app.sh . "$@" ./GIT-GUI-BUILD-OPTIONS ./GIT-VERSION-FILE
+ endif
+ 
+diff --git a/git-gui/generate-macos-app.sh b/git-gui/generate-macos-app.sh
+index 71b9fa67a4..a403f0f385 100755
+--- a/git-gui/generate-macos-app.sh
++++ b/git-gui/generate-macos-app.sh
+@@ -15,11 +15,11 @@ rm -rf "$OUTPUT" "$OUTPUT+"
+ mkdir -p "$OUTPUT+/Contents/MacOS"
+ mkdir -p "$OUTPUT+/Contents/Resources/Scripts"
+ 
+-cp "$TKEXECUTABLE" "$OUTPUT+/Contents/MacOS"
++cp "$TCLTK_PATH" "$OUTPUT+/Contents/MacOS/Wish"
+ cp "$SOURCE_DIR/macosx/git-gui.icns" "$OUTPUT+/Contents/Resources"
+ sed \
+ 	-e "s/@@GITGUI_VERSION@@/$GITGUI_VERSION/g" \
+-	-e "s/@@GITGUI_TKEXECUTABLE@@/$(basename "$TKEXECUTABLE")/g" \
++	-e "s/@@GITGUI_TKEXECUTABLE@@/Wish/g" \
+ 	"$SOURCE_DIR/macosx/Info.plist" \
+ 	>"$OUTPUT+/Contents/Info.plist"
+ sed \
+diff --git a/git-gui/generate-macos-wrapper.sh b/git-gui/generate-macos-wrapper.sh
+index 0304937f41..5a569b9dda 100755
+--- a/git-gui/generate-macos-wrapper.sh
++++ b/git-gui/generate-macos-wrapper.sh
+@@ -26,7 +26,7 @@ rm -f "$OUTPUT" "$OUTPUT+"
+ 		echo "git-gui version $GITGUI_VERSION"
+ 	else
+ 		libdir="${GIT_GUI_LIB_DIR:-$GITGUI_LIBDIR}"
+-		exec "$libdir/Git Gui.app/Contents/MacOS/$(basename "$TKEXECUTABLE")" "$0" "$@"
++		exec "$libdir/Git Gui.app/Contents/MacOS/Wish" "$0" "$@"
+ 	fi
+ 	EOF
+ ) >"$OUTPUT+"
 -- 
-2.49.0.22.g7139c3ce93
+2.50.0
 

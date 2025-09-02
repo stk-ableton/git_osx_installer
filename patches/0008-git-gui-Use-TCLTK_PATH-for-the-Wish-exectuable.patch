@@ -1,7 +1,7 @@
-From be5ffbf7a8fadbb11dc14e562ccd599a7dbf098b Mon Sep 17 00:00:00 2001
+From 56334e006139820a8977adc3d0e4195900435e08 Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Mon, 12 Oct 2020 17:13:51 +0200
-Subject: [PATCH 09/19] git-gui: Use TCLTK_PATH for the Wish exectuable
+Subject: [PATCH 08/21] git-gui: Use TCLTK_PATH for the Wish exectuable
 
 This allows us to use a non-framework version of Tcl/Tk.
 
@@ -14,10 +14,10 @@ in fixing this.
  3 files changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/git-gui/Makefile b/git-gui/Makefile
-index 8672dd2d6b..6ad194ca13 100644
+index 1f3f0de61b..aafcaa167f 100644
 --- a/git-gui/Makefile
 +++ b/git-gui/Makefile
-@@ -159,7 +159,7 @@ Git\ Gui.app: GIT-VERSION-FILE GIT-GUI-BUILD-OPTIONS \
+@@ -158,7 +158,7 @@ Git\ Gui.app: GIT-VERSION-FILE GIT-GUI-BUILD-OPTIONS \
  		macosx/Info.plist \
  		macosx/git-gui.icns \
  		macosx/AppMain.tcl \
@@ -58,5 +58,5 @@ index 0304937f41..5a569b9dda 100755
  	EOF
  ) >"$OUTPUT+"
 -- 
-2.50.0
+2.51.0.188.g7229e14d4b.dirty
 

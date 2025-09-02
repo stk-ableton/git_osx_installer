@@ -1,7 +1,7 @@
-From a35d247c14e68dc6a354fd5902238e4c483fbdea Mon Sep 17 00:00:00 2001
+From a8eece2527c53ef9adf6efe03cf99a2c366af837 Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Sun, 2 Jun 2013 08:52:14 +0200
-Subject: [PATCH 04/19] gitk: Add app bundle
+Subject: [PATCH 04/21] gitk: Add app bundle
 
 This way we get a nicer dock icon.
 ---
@@ -17,10 +17,10 @@ This way we get a nicer dock icon.
  create mode 100644 gitk-git/macosx/gitk.icns
 
 diff --git a/git-gui/git-gui.sh b/git-gui/git-gui.sh
-index 836f8cba89..876df7f48f 100755
+index 88e8207bf2..9dd5f3641b 100755
 --- a/git-gui/git-gui.sh
 +++ b/git-gui/git-gui.sh
-@@ -2136,11 +2136,20 @@ proc do_gitk {revs {is_submodule false}} {
+@@ -1998,11 +1998,20 @@ proc do_gitk {revs {is_submodule false}} {
  	global current_diff_path file_states current_diff_side ui_index
  	global _gitdir _gitworktree
  
@@ -45,12 +45,12 @@ index 836f8cba89..876df7f48f 100755
  	if {$exe eq {}} {
  		error_popup [mc "Couldn't find gitk in PATH"]
  	} else {
-@@ -2180,7 +2189,7 @@ proc do_gitk {revs {is_submodule false}} {
+@@ -2042,7 +2051,7 @@ proc do_gitk {revs {is_submodule false}} {
  			unset env(GIT_DIR)
  			unset env(GIT_WORK_TREE)
  		}
--		eval exec $cmd $revs "--" "--" &
-+		eval exec $cmd $revs $double_dash_for_wish "--" &
+-		safe_exec_bg [concat $cmd $revs "--" "--"]
++		safe_exec_bg [concat $cmd $revs $double_dash_for_wish "--"]
  
  		set env(GIT_DIR) $_gitdir
  		set env(GIT_WORK_TREE) $_gitworktree
@@ -2643,5 +2643,5 @@ literal 0
 HcmV?d00001
 
 -- 
-2.50.0
+2.51.0.188.g7229e14d4b.dirty
 

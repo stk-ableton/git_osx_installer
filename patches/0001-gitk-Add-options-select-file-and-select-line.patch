@@ -1,7 +1,7 @@
-From a4fd0e601a902e5457914ecc18b9035607365ad5 Mon Sep 17 00:00:00 2001
+From f090197a0c3e984c39a16dbcb70800271116deae Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Tue, 25 Sep 2012 18:38:18 +0200
-Subject: [PATCH 01/19] gitk: Add options --select-file and --select-line
+Subject: [PATCH 01/21] gitk: Add options --select-file and --select-line
 
 These can be used in combination with --select-commit to jump to a given
 line in a patch on startup. (They don't have any effect when
@@ -44,10 +44,10 @@ easily be mapped to a key in vim or other editors.
  1 file changed, 28 insertions(+), 3 deletions(-)
 
 diff --git a/gitk-git/gitk b/gitk-git/gitk
-index 19689765cd..2e2ddc72fd 100755
+index 3b6acfc592..ec56efb32b 100755
 --- a/gitk-git/gitk
 +++ b/gitk-git/gitk
-@@ -592,12 +592,17 @@ proc stop_rev_list {view} {
+@@ -706,12 +706,17 @@ proc stop_rev_list {view} {
  }
  
  proc reset_pending_select {selid} {
@@ -66,7 +66,7 @@ index 19689765cd..2e2ddc72fd 100755
      } else {
          set pending_select $mainheadid
      }
-@@ -1736,6 +1741,16 @@ proc getcommitlines {fd inst view updating}  {
+@@ -1849,6 +1854,16 @@ proc getcommitlines {fd inst view updating}  {
      return 2
  }
  
@@ -83,7 +83,7 @@ index 19689765cd..2e2ddc72fd 100755
  proc chewcommits {} {
      global curview hlview viewcomplete
      global pending_select
-@@ -1750,7 +1765,7 @@ proc chewcommits {} {
+@@ -1863,7 +1878,7 @@ proc chewcommits {} {
              reset_pending_select {}
  
              if {[commitinview $pending_select $curview]} {
@@ -92,7 +92,7 @@ index 19689765cd..2e2ddc72fd 100755
              } else {
                  set row [first_real_row]
                  selectline $row 1
-@@ -5380,7 +5395,7 @@ proc layoutmore {} {
+@@ -5411,7 +5426,7 @@ proc layoutmore {} {
      if {[info exists pending_select] &&
          [commitinview $pending_select $curview]} {
          update
@@ -101,7 +101,7 @@ index 19689765cd..2e2ddc72fd 100755
      }
      drawvisible
  }
-@@ -7461,6 +7476,8 @@ proc selectline {l isnew {desired_loc {}} {switch_to_patch 0}} {
+@@ -7485,6 +7500,8 @@ proc selectline {l isnew {desired_loc {}} {switch_to_patch 0}} {
      global vinlinediff
  
      unset -nocomplain pending_select
@@ -110,7 +110,7 @@ index 19689765cd..2e2ddc72fd 100755
      $canv delete hover
      normalline
      unsel_reflist
-@@ -12681,6 +12698,8 @@ if {[catch {set gitdir [exec git rev-parse --git-dir]}]} {
+@@ -12715,6 +12732,8 @@ if {[catch {set gitdir [exec git rev-parse --git-dir]}]} {
  
  set selecthead {}
  set selectheadid {}
@@ -119,7 +119,7 @@ index 19689765cd..2e2ddc72fd 100755
  
  set revtreeargs {}
  set cmdline_files {}
-@@ -12696,6 +12715,12 @@ foreach arg $argv {
+@@ -12730,6 +12749,12 @@ foreach arg $argv {
          "--select-commit=*" {
              set selecthead [string range $arg 16 end]
          }
@@ -133,5 +133,5 @@ index 19689765cd..2e2ddc72fd 100755
              set revtreeargscmd [string range $arg 10 end]
          }
 -- 
-2.50.0
+2.51.0.188.g7229e14d4b.dirty
 

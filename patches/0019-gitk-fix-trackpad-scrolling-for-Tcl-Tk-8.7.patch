@@ -1,0 +1,70 @@
+From b71771388035c4d1706ad6284342f31cab98f6bc Mon Sep 17 00:00:00 2001
+From: Ruoyu Zhong <zhongruoyu@outlook.com>
+Date: Wed, 27 Aug 2025 10:12:19 +0800
+Subject: [PATCH 19/21] gitk: fix trackpad scrolling for Tcl/Tk 8.7+
+
+TIP 684 [1] introduced TouchpadScroll events in Tcl/Tk 8.7, separating
+trackpad gestures from traditional MouseWheel events. This broke
+trackpad scrolling in gitk where trackpads generate TouchpadScroll
+events instead of MouseWheel events.
+
+Fix that by adding TouchpadScroll event bindings for all scrollable
+widgets following the TIP 684 specification. Implement a new
+precisescrollval proc to handle the smaller delta values from
+TouchpadScroll events, using appropriate scaling factors that seem
+sensible on my MacBook.
+
+Fixes https://github.com/j6t/gitk/issues/31.
+
+[1]: https://core.tcl-lang.org/tips/doc/main/tip/684.md
+
+Signed-off-by: Ruoyu Zhong <zhongruoyu@outlook.com>
+---
+ gitk-git/gitk | 24 ++++++++++++++++++++++++
+ 1 file changed, 24 insertions(+)
+
+diff --git a/gitk-git/gitk b/gitk-git/gitk
+index bd684e5081..a3ad80d06c 100755
+--- a/gitk-git/gitk
++++ b/gitk-git/gitk
+@@ -2316,6 +2316,11 @@ proc scrollval {D {koff 0}} {
+     return [expr int(-($D / $scroll_D0) * max(1, $kscroll-$koff))]
+ }
+ 
++proc precisescrollval {D {koff 0}} {
++    global kscroll
++    return [expr (-($D / 10.0) * max(1, $kscroll-$koff))]
++}
++
+ proc bind_mousewheel {} {
+     global canv cflist ctext
+     bindall <MouseWheel> {allcanvs yview scroll [scrollval %D] units}
+@@ -2334,6 +2339,25 @@ proc bind_mousewheel {} {
+         bind $cflist <Alt-MouseWheel> {$cflist yview scroll [scrollval 5*%D 2] units}
+         bind $cflist <Alt-Shift-MouseWheel> break
+         bind $canv <Alt-Shift-MouseWheel> {$canv xview scroll [scrollval 5*%D] units}
++
++        bindall <TouchpadScroll> {
++            lassign [tk::PreciseScrollDeltas %D] deltaX deltaY
++            allcanvs yview scroll [precisescrollval $deltaY] units
++        }
++        bind $ctext <TouchpadScroll> {
++            lassign [tk::PreciseScrollDeltas %D] deltaX deltaY
++            $ctext yview scroll [precisescrollval $deltaY 2] units
++            $ctext xview scroll [precisescrollval $deltaX 2] units
++        }
++        bind $cflist <TouchpadScroll> {
++            lassign [tk::PreciseScrollDeltas %D] deltaX deltaY
++            $cflist yview scroll [precisescrollval $deltaY 2] units
++        }
++        bind $canv <TouchpadScroll> {
++            lassign [tk::PreciseScrollDeltas %D] deltaX deltaY
++            $canv xview scroll [precisescrollval $deltaX] units
++            allcanvs yview scroll [precisescrollval $deltaY] units
++        }
+     }
+ }
+ 
+-- 
+2.51.0.188.g7229e14d4b.dirty
+

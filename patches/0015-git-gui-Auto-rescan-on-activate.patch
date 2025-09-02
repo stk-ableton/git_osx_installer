@@ -1,7 +1,7 @@
-From dbca028987adb2aae71bb62617abe9c512477ed9 Mon Sep 17 00:00:00 2001
+From df42ef21e0dcd9353de56499de287e37f5815ee5 Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Tue, 3 Nov 2020 17:16:31 +0100
-Subject: [PATCH 16/19] git-gui: Auto-rescan on activate
+Subject: [PATCH 15/21] git-gui: Auto-rescan on activate
 
 Do an automatic rescan whenever the git-gui window receives focus. Most other
 GUI tools do this, and it's very convenient; no more pressing F5 manually.
@@ -16,10 +16,10 @@ Signed-off-by: Pratyush Yadav <me@yadavpratyush.com>
  2 files changed, 6 insertions(+)
 
 diff --git a/git-gui/git-gui.sh b/git-gui/git-gui.sh
-index 5b2f40191b..52fe11def9 100755
+index cc26773749..d4df865376 100755
 --- a/git-gui/git-gui.sh
 +++ b/git-gui/git-gui.sh
-@@ -901,6 +901,7 @@ set font_descs {
+@@ -863,6 +863,7 @@ set font_descs {
  }
  set default_config(gui.stageuntracked) ask
  set default_config(gui.displayuntracked) true
@@ -27,7 +27,7 @@ index 5b2f40191b..52fe11def9 100755
  
  ######################################################################
  ##
-@@ -4074,6 +4075,10 @@ if {[is_MacOSX]} {
+@@ -3893,6 +3894,10 @@ if {[is_MacOSX]} {
  	bind .   <Alt-Key-4> {focus $::ui_comm}
  }
  
@@ -39,7 +39,7 @@ index 5b2f40191b..52fe11def9 100755
  set file_lists_last_clicked($ui_workdir) {}
  
 diff --git a/git-gui/lib/option.tcl b/git-gui/lib/option.tcl
-index e43971bfa3..9e83db7510 100644
+index 487d70691d..cb2b3c1e88 100644
 --- a/git-gui/lib/option.tcl
 +++ b/git-gui/lib/option.tcl
 @@ -145,6 +145,7 @@ proc do_options {} {
@@ -51,5 +51,5 @@ index e43971bfa3..9e83db7510 100644
  		{b gui.pruneduringfetch {mc "Prune Tracking Branches During Fetch"}}
  		{b gui.matchtrackingbranch {mc "Match Tracking Branches"}}
 -- 
-2.50.0
+2.51.0.188.g7229e14d4b.dirty
 

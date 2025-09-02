@@ -1,0 +1,35 @@
+From e9a95184bd86f73f4925490a7e6c43270ed8db0c Mon Sep 17 00:00:00 2001
+From: Ruoyu Zhong <zhongruoyu@outlook.com>
+Date: Sun, 24 Aug 2025 18:07:58 +0800
+Subject: [PATCH 18/21] gitk: use <Button-3> for ctx menus on macOS with Tcl
+ 8.7+
+
+Commit d277e89f87fda01daa1e1a35fc1f7118678faa1f added special handling
+on macOS (OS X) that makes button 2 the right mouse button. As per TIP
+474 [1], Tcl 8.7 has swapped buttons 2 and 3 such that button 3 is made
+the right mouse button as in other platforms. Therefore, the logic
+should be updated to use button 3 on macOS with Tcl 8.7+.
+
+[1]: https://core.tcl-lang.org/tips/doc/main/tip/474.md
+
+Signed-off-by: Ruoyu Zhong <zhongruoyu@outlook.com>
+---
+ gitk-git/gitk | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gitk-git/gitk b/gitk-git/gitk
+index d0e7013a43..bd684e5081 100755
+--- a/gitk-git/gitk
++++ b/gitk-git/gitk
+@@ -12634,7 +12634,7 @@ set foundbgcolor yellow
+ set currentsearchhitbgcolor orange
+ 
+ # button for popping up context menus
+-if {[tk windowingsystem] eq "aqua"} {
++if {[tk windowingsystem] eq "aqua" && [package vcompare $::tcl_version 8.7] < 0} {
+     set ctxbut <Button-2>
+ } else {
+     set ctxbut <Button-3>
+-- 
+2.51.0.188.g7229e14d4b.dirty
+

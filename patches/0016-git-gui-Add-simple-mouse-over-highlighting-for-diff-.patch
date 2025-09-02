@@ -1,7 +1,7 @@
-From e4a5a2317d317cf1610f785f987bd03795f39165 Mon Sep 17 00:00:00 2001
+From d63bf676a6f7ac9a79ff5c4850fed387e6d7c1f9 Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Fri, 21 Mar 2014 15:19:50 +0100
-Subject: [PATCH 17/19] git-gui: Add simple mouse-over highlighting for diff
+Subject: [PATCH 16/21] git-gui: Add simple mouse-over highlighting for diff
  hunks
 
 This makes it a little easier to see where hunks start and end, in other words
@@ -12,10 +12,10 @@ what would be affected when you choose "Stage hunk".
  2 files changed, 31 insertions(+), 1 deletion(-)
 
 diff --git a/git-gui/lib/diff.tcl b/git-gui/lib/diff.tcl
-index d657bfec05..d01e471304 100644
+index 442737ba4f..26baad49ea 100644
 --- a/git-gui/lib/diff.tcl
 +++ b/git-gui/lib/diff.tcl
-@@ -377,6 +377,9 @@ proc read_diff {fd conflict_size cont_info} {
+@@ -363,6 +363,9 @@ proc read_diff {fd conflict_size cont_info} {
  	global is_3way_diff is_conflict_diff current_diff_header
  	global current_diff_queue
  
@@ -25,7 +25,7 @@ index d657bfec05..d01e471304 100644
  	$ui_diff conf -state normal
  	while {[gets $fd line] >= 0} {
  		foreach {line markup} [parse_color_line $line] break
-@@ -393,7 +396,17 @@ proc read_diff {fd conflict_size cont_info} {
+@@ -379,7 +382,17 @@ proc read_diff {fd conflict_size cont_info} {
  
  		# -- Check for end of diff header (any hunk line will do this).
  		#
@@ -44,7 +44,7 @@ index d657bfec05..d01e471304 100644
  
  		# -- Automatically detect if this is a 3 way diff.
  		#
-@@ -508,6 +521,7 @@ proc read_diff {fd conflict_size cont_info} {
+@@ -494,6 +507,7 @@ proc read_diff {fd conflict_size cont_info} {
  			}
  			}
  		}
@@ -53,7 +53,7 @@ index d657bfec05..d01e471304 100644
  		$ui_diff insert end $line $tags
  		if {[string index $line end] eq "\r"} {
 diff --git a/git-gui/lib/themed.tcl b/git-gui/lib/themed.tcl
-index f43d84e54f..38fd95c029 100644
+index c18e201d85..c2ed6a35bb 100644
 --- a/git-gui/lib/themed.tcl
 +++ b/git-gui/lib/themed.tcl
 @@ -6,10 +6,12 @@ namespace eval color {
@@ -70,11 +70,11 @@ index f43d84e54f..38fd95c029 100644
  	proc sync_with_theme {} {
  		set base_bg				[ttk::style lookup . -background]
 @@ -25,6 +27,8 @@ namespace eval color {
- 		set color::select_fg $select_fg
- 		set color::inactive_select_bg $inactive_select_bg
- 		set color::inactive_select_fg $inactive_select_fg
-+		set color::text_bg $text_bg
-+		set color::hover_bg [make_hover_bg $text_bg]
+ 		set ::color::select_fg $select_fg
+ 		set ::color::inactive_select_bg $inactive_select_bg
+ 		set ::color::inactive_select_fg $inactive_select_fg
++		set ::color::text_bg $text_bg
++		set ::color::hover_bg [make_hover_bg $text_bg]
  
  		proc add_option {key val} {
  			option add $key $val widgetDefault
@@ -98,5 +98,5 @@ index f43d84e54f..38fd95c029 100644
  	# Handle either current Tk or older versions of 8.5
  	if {[catch {set theme [ttk::style theme use]}]} {
 -- 
-2.50.0
+2.51.0.188.g7229e14d4b.dirty
 

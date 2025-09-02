@@ -1,7 +1,7 @@
-From ba1adc7611689c1b2e8aa4875dfbcddeb551a427 Mon Sep 17 00:00:00 2001
+From 9d36d571ee7b94a62231aadac4b08eb266612596 Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Sat, 29 Mar 2025 17:58:00 +0100
-Subject: [PATCH 03/19] gitk: add catch around the code that brings gitk to the
+Subject: [PATCH 03/21] gitk: add catch around the code that brings gitk to the
  front
 
 We do this for git-gui too, so there must be some reason.
@@ -10,28 +10,28 @@ We do this for git-gui too, so there must be some reason.
  1 file changed, 7 insertions(+), 5 deletions(-)
 
 diff --git a/gitk-git/gitk b/gitk-git/gitk
-index 80bf4da2cb..8b5f039d4a 100755
+index 53162c139f..5747b56ed4 100755
 --- a/gitk-git/gitk
 +++ b/gitk-git/gitk
-@@ -12478,11 +12478,13 @@ if {[catch {package require Tk 8.4} err]} {
+@@ -12453,11 +12453,13 @@ namespace import ::msgcat::mc
  
  # on OSX bring the current Wish process window to front
  if {[tk windowingsystem] eq "aqua"} {
--    exec osascript -e [format {
+-    safe_exec [list osascript -e [format {
 -        tell application "System Events"
 -            set frontmost of processes whose unix id is %d to true
 -        end tell
--    } [pid] ]
+-    } [pid] ]]
 +    catch {
-+        exec osascript -e [format {
++        safe_exec [list osascript -e [format {
 +            tell application "System Events"
 +                set frontmost of processes whose unix id is %d to true
 +            end tell
-+        } [pid] ]
++        } [pid] ]]
 +    }
  }
  
  # Unset GIT_TRACE var if set
 -- 
-2.50.0
+2.51.0.188.g7229e14d4b.dirty
 

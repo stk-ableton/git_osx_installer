@@ -47,7 +47,7 @@ DOWNLOAD_LOCATION=https://www.kernel.org/pub/software/scm/git
 
 XML_CATALOG_FILES=$(shell bin/find-file $(BREW_PREFIX)/etc/xml/catalog)
 
-TCL_VERSION = 8.6
+TCL_VERSION = 9.0
 
 BUILD_CODE := intel-$(ARCH_CODE)-$(OSX_CODE)
 BUILD_DIR := build/$(BUILD_CODE)

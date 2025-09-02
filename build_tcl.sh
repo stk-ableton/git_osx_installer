@@ -4,8 +4,8 @@ set -e -o pipefail
 
 export MAKEFLAGS=
 
-TCL_VERSION=8.6.16
-TCL_MAJOR_VERSION=8.6
+TCL_VERSION=9.0.2
+TCL_MAJOR_VERSION=9.0
 
 TCL_SRC=tcl$TCL_VERSION-src.tar.gz
 TK_SRC=tk$TCL_VERSION-src.tar.gz

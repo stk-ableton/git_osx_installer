@@ -1,7 +1,7 @@
-From 0203bdde00fb83fef4d4cfc6260d8535ed938e10 Mon Sep 17 00:00:00 2001
+From b392848889c2a5e4b2851eff342d438c02317ada Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Mon, 8 Nov 2010 10:35:34 +0100
-Subject: [PATCH 06/21] gitk: Add "First parent" checkbox
+Subject: [PATCH 05/18] gitk: Add "First parent" checkbox
 
 Sometimes it's desirable to see what changes were introduced by a
 merge commit, rather than how conflicts were resolved. This adds
@@ -14,10 +14,10 @@ Signed-off-by: Stefan Haller <stefan@haller-berlin.de>
  1 file changed, 22 insertions(+), 3 deletions(-)
 
 diff --git a/gitk-git/gitk b/gitk-git/gitk
-index 5747b56ed4..5f5e3ac397 100755
+index f401880415..ac68d43993 100755
 --- a/gitk-git/gitk
 +++ b/gitk-git/gitk
-@@ -2665,6 +2665,10 @@ proc makewindow {} {
+@@ -2650,6 +2650,10 @@ proc makewindow {} {
      trace add variable worddiff write changeworddiff
      pack .bleft.mid.worddiff -side left -padx 5
  
@@ -28,7 +28,7 @@ index 5747b56ed4..5f5e3ac397 100755
      set ctext .bleft.bottom.ctext
      text $ctext -background $bgcolor -foreground $fgcolor \
          -state disabled -undo 0 -font textfont \
-@@ -7498,6 +7502,7 @@ proc selectline {l isnew {desired_loc {}} {switch_to_patch 0}} {
+@@ -7516,6 +7520,7 @@ proc selectline {l isnew {desired_loc {}} {switch_to_patch 0}} {
      global targetrow targetid lastscrollrows
      global autocopy autoselect autosellen jump_to_here
      global vinlinediff
@@ -36,7 +36,7 @@ index 5747b56ed4..5f5e3ac397 100755
  
      unset -nocomplain pending_select
      unset -nocomplain pending_select_file
-@@ -7651,7 +7656,7 @@ proc selectline {l isnew {desired_loc {}} {switch_to_patch 0}} {
+@@ -7669,7 +7674,7 @@ proc selectline {l isnew {desired_loc {}} {switch_to_patch 0}} {
          gettree $id
      } elseif {$vinlinediff($curview) == 1} {
          showinlinediff $id
@@ -45,7 +45,7 @@ index 5747b56ed4..5f5e3ac397 100755
          startdiff $id
      } else {
          mergediff $id
-@@ -8096,7 +8101,7 @@ proc diffcmd {ids flags} {
+@@ -8114,7 +8119,7 @@ proc diffcmd {ids flags} {
  proc gettreediffs {ids} {
      global treediff treepending limitdiffs vfilelimit curview
  
@@ -54,7 +54,7 @@ index 5747b56ed4..5f5e3ac397 100755
      if {$limitdiffs && $vfilelimit($curview) ne {}} {
              set cmd [concat $cmd -- $vfilelimit($curview)]
      }
-@@ -8193,21 +8198,34 @@ proc initblobdiffvars {} {
+@@ -8211,21 +8216,34 @@ proc initblobdiffvars {} {
      set diffseehere -1
  }
  
@@ -90,7 +90,7 @@ index 5747b56ed4..5f5e3ac397 100755
      if {$limitdiffs && $vfilelimit($curview) ne {}} {
          set cmd [concat $cmd -- $vfilelimit($curview)]
      }
-@@ -12590,6 +12608,7 @@ set diffcontext 3
+@@ -12693,6 +12711,7 @@ set diffcontext 3
  set mergecolors {red blue "#00ff00" purple brown "#009090" magenta "#808000" "#009000" "#ff0080" cyan "#b07070" "#70b0f0" "#70f0b0" "#f0b070" "#ff70b0"}
  set ignorespace 0
  set worddiff ""
@@ -99,5 +99,5 @@ index 5747b56ed4..5f5e3ac397 100755
  
  set headbgcolor "#00ff00"
 -- 
-2.51.0.188.g7229e14d4b.dirty
+2.51.2
 

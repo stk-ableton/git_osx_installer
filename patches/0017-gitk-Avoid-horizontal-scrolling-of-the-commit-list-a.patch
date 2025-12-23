@@ -1,7 +1,7 @@
-From bbc8154ac84539b43df1d8be7c84fd1a3927f9cd Mon Sep 17 00:00:00 2001
+From 697457a45267a16ddea77e8bbdd8b0ef94e429b7 Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Tue, 2 Sep 2025 13:25:36 +0200
-Subject: [PATCH 20/21] gitk: Avoid horizontal scrolling of the commit list and
+Subject: [PATCH 17/18] gitk: Avoid horizontal scrolling of the commit list and
  diff
 
 With two-finger scrolling on a track pad, horizontal scrolling of the commit
@@ -13,10 +13,10 @@ couldn't test this because I don't have one.
  1 file changed, 2 deletions(-)
 
 diff --git a/gitk-git/gitk b/gitk-git/gitk
-index a3ad80d06c..41029ef1ea 100755
+index d1044b6dac..138d62d674 100755
 --- a/gitk-git/gitk
 +++ b/gitk-git/gitk
-@@ -2347,7 +2347,6 @@ proc bind_mousewheel {} {
+@@ -2354,7 +2354,6 @@ proc bind_mousewheel {} {
          bind $ctext <TouchpadScroll> {
              lassign [tk::PreciseScrollDeltas %D] deltaX deltaY
              $ctext yview scroll [precisescrollval $deltaY 2] units
@@ -24,7 +24,7 @@ index a3ad80d06c..41029ef1ea 100755
          }
          bind $cflist <TouchpadScroll> {
              lassign [tk::PreciseScrollDeltas %D] deltaX deltaY
-@@ -2355,7 +2354,6 @@ proc bind_mousewheel {} {
+@@ -2362,7 +2361,6 @@ proc bind_mousewheel {} {
          }
          bind $canv <TouchpadScroll> {
              lassign [tk::PreciseScrollDeltas %D] deltaX deltaY
@@ -33,5 +33,5 @@ index a3ad80d06c..41029ef1ea 100755
          }
      }
 -- 
-2.51.0.188.g7229e14d4b.dirty
+2.51.2
 

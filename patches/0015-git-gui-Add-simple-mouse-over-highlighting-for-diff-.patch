@@ -1,7 +1,7 @@
-From d63bf676a6f7ac9a79ff5c4850fed387e6d7c1f9 Mon Sep 17 00:00:00 2001
+From 6c31149ce924e1adfcd8745bc4e451d13e74b066 Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Fri, 21 Mar 2014 15:19:50 +0100
-Subject: [PATCH 16/21] git-gui: Add simple mouse-over highlighting for diff
+Subject: [PATCH 15/18] git-gui: Add simple mouse-over highlighting for diff
  hunks
 
 This makes it a little easier to see where hunks start and end, in other words
@@ -98,5 +98,5 @@ index c18e201d85..c2ed6a35bb 100644
  	# Handle either current Tk or older versions of 8.5
  	if {[catch {set theme [ttk::style theme use]}]} {
 -- 
-2.51.0.188.g7229e14d4b.dirty
+2.51.2
 

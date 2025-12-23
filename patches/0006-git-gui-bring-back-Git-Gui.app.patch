@@ -1,7 +1,7 @@
-From 88dc69a04e2b75f2d24ab2347a2d5649600a3b13 Mon Sep 17 00:00:00 2001
+From af1ffbd384cc93bbd900537c96aed8cbb338b901 Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Tue, 2 Sep 2025 12:08:47 +0200
-Subject: [PATCH 07/21] git-gui: bring back Git Gui.app
+Subject: [PATCH 06/18] git-gui: bring back Git Gui.app
 
 This was removed upstream, but we want it, so revert the upstream commit
 (df41037be019 in the git-gui repo).
@@ -43,7 +43,7 @@ index 3c112af578..5fd885c2bf 100644
  TCL_PATH=@TCL_PATH@
 +TKEXECUTABLE=@TKEXECUTABLE@
 diff --git a/git-gui/Makefile b/git-gui/Makefile
-index 27bbe051de..1f3f0de61b 100644
+index 69b0b84435..5dceebde85 100644
 --- a/git-gui/Makefile
 +++ b/git-gui/Makefile
 @@ -53,6 +53,8 @@ INSTALL_R0 = $(INSTALL) -m 644 # space is required here
@@ -139,7 +139,7 @@ index 27bbe051de..1f3f0de61b 100644
  ifdef GITGUI_WINDOWS_WRAPPER
  all:: git-gui
  endif
-@@ -192,6 +232,10 @@ ifdef GITGUI_WINDOWS_WRAPPER
+@@ -193,6 +233,10 @@ ifdef GITGUI_WINDOWS_WRAPPER
  endif
  	$(QUIET)$(INSTALL_D0)'$(DESTDIR_SQ)$(libdir_SQ)' $(INSTALL_D1)
  	$(QUIET)$(INSTALL_R0)lib/tclIndex $(INSTALL_R1) '$(DESTDIR_SQ)$(libdir_SQ)'
@@ -150,7 +150,7 @@ index 27bbe051de..1f3f0de61b 100644
  	$(QUIET)$(foreach p,$(ALL_LIBFILES) $(NONTCL_LIBFILES), $(INSTALL_R0)$p $(INSTALL_R1) '$(DESTDIR_SQ)$(libdir_SQ)' &&) true
  	$(QUIET)$(INSTALL_D0)'$(DESTDIR_SQ)$(msgsdir_SQ)' $(INSTALL_D1)
  	$(QUIET)$(foreach p,$(ALL_MSGFILES), $(INSTALL_R0)$p $(INSTALL_R1) '$(DESTDIR_SQ)$(msgsdir_SQ)' &&) true
-@@ -206,6 +250,10 @@ ifdef GITGUI_WINDOWS_WRAPPER
+@@ -208,6 +252,10 @@ ifdef GITGUI_WINDOWS_WRAPPER
  endif
  	$(QUIET)$(CLEAN_DST) '$(DESTDIR_SQ)$(libdir_SQ)'
  	$(QUIET)$(REMOVE_F0)'$(DESTDIR_SQ)$(libdir_SQ)'/tclIndex $(REMOVE_F1)
@@ -161,7 +161,7 @@ index 27bbe051de..1f3f0de61b 100644
  	$(QUIET)$(foreach p,$(ALL_LIBFILES) $(NONTCL_LIBFILES), $(REMOVE_F0)'$(DESTDIR_SQ)$(libdir_SQ)'/$(notdir $p) $(REMOVE_F1) &&) true
  	$(QUIET)$(CLEAN_DST) '$(DESTDIR_SQ)$(msgsdir_SQ)'
  	$(QUIET)$(foreach p,$(ALL_MSGFILES), $(REMOVE_F0)'$(DESTDIR_SQ)$(msgsdir_SQ)'/$(notdir $p) $(REMOVE_F1) &&) true
-@@ -221,6 +269,9 @@ dist-version: GIT-VERSION-FILE
+@@ -223,6 +271,9 @@ dist-version: GIT-VERSION-FILE
  clean::
  	$(RM_RF) $(GITGUI_MAIN) git-gui--askpass lib/tclIndex po/*.msg $(PO_TEMPLATE)
  	$(RM_RF) GIT-VERSION-FILE GIT-GUI-BUILD-OPTIONS
@@ -489,5 +489,5 @@ index 320ba09ecf..5142e5f469 100644
  
  custom_target(
 -- 
-2.51.0.188.g7229e14d4b.dirty
+2.51.2
 

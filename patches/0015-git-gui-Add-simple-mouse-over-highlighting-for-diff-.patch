@@ -1,4 +1,4 @@
-From 6c31149ce924e1adfcd8745bc4e451d13e74b066 Mon Sep 17 00:00:00 2001
+From 4016bc0ed27486bc3db4ce9ad9b3495f7794c38e Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Fri, 21 Mar 2014 15:19:50 +0100
 Subject: [PATCH 15/18] git-gui: Add simple mouse-over highlighting for diff
@@ -12,7 +12,7 @@ what would be affected when you choose "Stage hunk".
  2 files changed, 31 insertions(+), 1 deletion(-)
 
 diff --git a/git-gui/lib/diff.tcl b/git-gui/lib/diff.tcl
-index 442737ba4f..26baad49ea 100644
+index 8be1a613fb..8b2cdd92bc 100644
 --- a/git-gui/lib/diff.tcl
 +++ b/git-gui/lib/diff.tcl
 @@ -363,6 +363,9 @@ proc read_diff {fd conflict_size cont_info} {
@@ -44,7 +44,7 @@ index 442737ba4f..26baad49ea 100644
  
  		# -- Automatically detect if this is a 3 way diff.
  		#
-@@ -494,6 +507,7 @@ proc read_diff {fd conflict_size cont_info} {
+@@ -496,6 +509,7 @@ proc read_diff {fd conflict_size cont_info} {
  			}
  			}
  		}
@@ -98,5 +98,5 @@ index c18e201d85..c2ed6a35bb 100644
  	# Handle either current Tk or older versions of 8.5
  	if {[catch {set theme [ttk::style theme use]}]} {
 -- 
-2.51.2
+2.52.0
 

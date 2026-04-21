@@ -1,4 +1,4 @@
-From e20d769d1a1ac4f457f01ddeea0078d499a0a6bb Mon Sep 17 00:00:00 2001
+From b5e443601a259a4b0e6a8114c87c3d2be9964d40 Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Tue, 25 Sep 2012 18:38:18 +0200
 Subject: [PATCH 01/18] gitk: Add options --select-file and --select-line
@@ -44,7 +44,7 @@ easily be mapped to a key in vim or other editors.
  1 file changed, 28 insertions(+), 3 deletions(-)
 
 diff --git a/gitk-git/gitk b/gitk-git/gitk
-index 7f62c8041d..b3168a2d36 100755
+index 2730274966..a2d5cab0b3 100755
 --- a/gitk-git/gitk
 +++ b/gitk-git/gitk
 @@ -706,12 +706,17 @@ proc stop_rev_list {view} {
@@ -101,7 +101,7 @@ index 7f62c8041d..b3168a2d36 100755
      }
      drawvisible
  }
-@@ -7503,6 +7518,8 @@ proc selectline {l isnew {desired_loc {}} {switch_to_patch 0}} {
+@@ -7506,6 +7521,8 @@ proc selectline {l isnew {desired_loc {}} {switch_to_patch 0}} {
      global vinlinediff
  
      unset -nocomplain pending_select
@@ -110,7 +110,7 @@ index 7f62c8041d..b3168a2d36 100755
      $canv delete hover
      normalline
      unsel_reflist
-@@ -12828,6 +12845,8 @@ if {[catch {set gitdir [exec git rev-parse --git-dir]}]} {
+@@ -12837,6 +12854,8 @@ if {[catch {set gitdir [exec git rev-parse --git-dir]}]} {
  
  set selecthead {}
  set selectheadid {}
@@ -119,7 +119,7 @@ index 7f62c8041d..b3168a2d36 100755
  
  set revtreeargs {}
  set cmdline_files {}
-@@ -12843,6 +12862,12 @@ foreach arg $argv {
+@@ -12852,6 +12871,12 @@ foreach arg $argv {
          "--select-commit=*" {
              set selecthead [string range $arg 16 end]
          }
@@ -133,5 +133,5 @@ index 7f62c8041d..b3168a2d36 100755
              set revtreeargscmd [string range $arg 10 end]
          }
 -- 
-2.51.2
+2.52.0
 

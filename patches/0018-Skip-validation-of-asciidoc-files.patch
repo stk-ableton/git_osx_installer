@@ -1,4 +1,4 @@
-From bec690b54b2d99394cfe134bc95d29e749ffd474 Mon Sep 17 00:00:00 2001
+From 3acbfccf22bb74aef598470d95b6f79da922421a Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Tue, 25 Jan 2022 19:05:21 +0100
 Subject: [PATCH 18/18] Skip validation of asciidoc files
@@ -37,5 +37,5 @@ index c0c9f21cb7..19c7a49684 100644
  ifdef USE_ASCIIDOCTOR
  ASCIIDOC         = asciidoctor
 -- 
-2.51.2
+2.52.0
 

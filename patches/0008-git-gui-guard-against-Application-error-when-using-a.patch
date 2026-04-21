@@ -1,4 +1,4 @@
-From df89ff982fa62ab717c38db19ba9a1f13eed4bb8 Mon Sep 17 00:00:00 2001
+From c487f6661f7954dd9695c7f7e73c3526e808d67d Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Wed, 18 Nov 2020 21:37:10 +0100
 Subject: [PATCH 08/18] git-gui: guard against "Application error" when using
@@ -19,7 +19,7 @@ Signed-off-by: Stefan Haller <stefan@haller-berlin.de>
  1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/git-gui/git-gui.sh b/git-gui/git-gui.sh
-index 8703381c97..73223df1eb 100755
+index 66715e9b34..6667809890 100755
 --- a/git-gui/git-gui.sh
 +++ b/git-gui/git-gui.sh
 @@ -2377,7 +2377,8 @@ proc toggle_or_diff {mode w args} {
@@ -33,5 +33,5 @@ index 8703381c97..73223df1eb 100755
  		if {$mode eq "toggle"} {
  			set col 0; set y 2
 -- 
-2.51.2
+2.52.0
 

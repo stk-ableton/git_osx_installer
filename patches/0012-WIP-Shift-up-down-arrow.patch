@@ -1,4 +1,4 @@
-From 6c8448e4db50222ca913d710349f1c0f50cd7271 Mon Sep 17 00:00:00 2001
+From 4fa16e4034209f3aa424f1206f1b41bfad53e6a0 Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Sun, 22 Nov 2020 15:54:55 +0100
 Subject: [PATCH 12/18] WIP Shift-up-down arrow
@@ -8,7 +8,7 @@ Subject: [PATCH 12/18] WIP Shift-up-down arrow
  1 file changed, 40 insertions(+)
 
 diff --git a/git-gui/git-gui.sh b/git-gui/git-gui.sh
-index fe3e8a7e2b..09f14e4b06 100755
+index d3a7671ee8..e0460c477b 100755
 --- a/git-gui/git-gui.sh
 +++ b/git-gui/git-gui.sh
 @@ -2505,6 +2505,44 @@ proc add_range_to_selection {w x y} {
@@ -66,5 +66,5 @@ index fe3e8a7e2b..09f14e4b06 100755
  unset i
  
 -- 
-2.51.2
+2.52.0
 

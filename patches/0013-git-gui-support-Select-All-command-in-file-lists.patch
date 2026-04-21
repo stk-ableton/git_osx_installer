@@ -1,4 +1,4 @@
-From a987ef52e6c81d0874282be1065ded956cd93a7f Mon Sep 17 00:00:00 2001
+From 9c2ee641e5a87b195fd36a7d34c5e0a9914fc371 Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Sun, 22 Nov 2020 20:32:38 +0100
 Subject: [PATCH 13/18] git-gui: support "Select All" command in file lists
@@ -9,7 +9,7 @@ Signed-off-by: Stefan Haller <stefan@haller-berlin.de>
  1 file changed, 22 insertions(+), 1 deletion(-)
 
 diff --git a/git-gui/git-gui.sh b/git-gui/git-gui.sh
-index 09f14e4b06..1983ac6d61 100755
+index e0460c477b..1d6e8060be 100755
 --- a/git-gui/git-gui.sh
 +++ b/git-gui/git-gui.sh
 @@ -2585,6 +2585,25 @@ proc toggle_commit_type {} {
@@ -57,5 +57,5 @@ index 09f14e4b06..1983ac6d61 100755
  unset i
  
 -- 
-2.51.2
+2.52.0
 

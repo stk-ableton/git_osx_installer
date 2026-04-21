@@ -1,4 +1,4 @@
-From 575527d0c2910d58078471e137e26c9bfd34c3ee Mon Sep 17 00:00:00 2001
+From 1fdca4cb5d2989499bd2e933b10944d2aabdd8a4 Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Sun, 2 Jun 2013 08:52:14 +0200
 Subject: [PATCH 03/18] gitk: Add app bundle
@@ -17,7 +17,7 @@ This way we get a nicer dock icon.
  create mode 100644 gitk-git/macosx/gitk.icns
 
 diff --git a/git-gui/git-gui.sh b/git-gui/git-gui.sh
-index e75205d37f..8703381c97 100755
+index 3fb7afb31a..66715e9b34 100755
 --- a/git-gui/git-gui.sh
 +++ b/git-gui/git-gui.sh
 @@ -1984,11 +1984,20 @@ proc do_gitk {revs {is_submodule false}} {
@@ -55,15 +55,16 @@ index e75205d37f..8703381c97 100755
  		set env(GIT_DIR) $_gitdir
  		set env(GIT_WORK_TREE) $_gitworktree
 diff --git a/gitk-git/.gitignore b/gitk-git/.gitignore
-index d7ebcaf366..a41c65c964 100644
+index 15f96aad5e..38840cae36 100644
 --- a/gitk-git/.gitignore
 +++ b/gitk-git/.gitignore
-@@ -1,2 +1,3 @@
+@@ -1,3 +1,4 @@
  /GIT-TCLTK-VARS
  /gitk-wish
 +/Gitk.app
+ po/gitk.pot
 diff --git a/gitk-git/Makefile b/gitk-git/Makefile
-index cc32dcab4b..73be11f8cd 100644
+index 41116d8a14..3f9d580078 100644
 --- a/gitk-git/Makefile
 +++ b/gitk-git/Makefile
 @@ -1,6 +1,8 @@
@@ -133,7 +134,7 @@ index cc32dcab4b..73be11f8cd 100644
 +	$(SHELL_PATH) ./generate-tcl.sh "$(gitk_libdir)/Gitk.app/Contents/MacOS/Wish" "$<" "$@"
  
  $(PO_TEMPLATE): gitk
- 	$(XGETTEXT) -kmc -LTcl -o $@ gitk
+ 	$(XGETTEXT) -kmc -LTcl --package-name=Gitk -o $@ gitk
 diff --git a/gitk-git/macosx/AppMain.tcl b/gitk-git/macosx/AppMain.tcl
 new file mode 100644
 index 0000000000..752153b54e
@@ -2643,5 +2644,5 @@ literal 0
 HcmV?d00001
 
 -- 
-2.51.2
+2.52.0
 

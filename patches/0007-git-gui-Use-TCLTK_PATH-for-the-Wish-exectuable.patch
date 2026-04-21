@@ -1,4 +1,4 @@
-From 4bcf52525bc225df8528e0af6b3c6274c1aa4fa9 Mon Sep 17 00:00:00 2001
+From f980034fb68870807aa14b41b4123752ad62e5cb Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Mon, 12 Oct 2020 17:13:51 +0200
 Subject: [PATCH 07/18] git-gui: Use TCLTK_PATH for the Wish exectuable
@@ -14,7 +14,7 @@ in fixing this.
  3 files changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/git-gui/Makefile b/git-gui/Makefile
-index 5dceebde85..311bc89029 100644
+index ff9d8f4487..367d300178 100644
 --- a/git-gui/Makefile
 +++ b/git-gui/Makefile
 @@ -158,7 +158,7 @@ Git\ Gui.app: GIT-VERSION-FILE GIT-GUI-BUILD-OPTIONS \
@@ -58,5 +58,5 @@ index 0304937f41..5a569b9dda 100755
  	EOF
  ) >"$OUTPUT+"
 -- 
-2.51.2
+2.52.0
 

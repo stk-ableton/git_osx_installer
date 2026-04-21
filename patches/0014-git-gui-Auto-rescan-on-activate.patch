@@ -1,4 +1,4 @@
-From 12f0050b466a97e42113ff33e4868bf7906291d7 Mon Sep 17 00:00:00 2001
+From fb41dc429679405e3301c21cd0166a61b07dd80d Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Tue, 3 Nov 2020 17:16:31 +0100
 Subject: [PATCH 14/18] git-gui: Auto-rescan on activate
@@ -16,7 +16,7 @@ Signed-off-by: Pratyush Yadav <me@yadavpratyush.com>
  2 files changed, 6 insertions(+)
 
 diff --git a/git-gui/git-gui.sh b/git-gui/git-gui.sh
-index 1983ac6d61..e6db9d970a 100755
+index 1d6e8060be..c3b3d4fb08 100755
 --- a/git-gui/git-gui.sh
 +++ b/git-gui/git-gui.sh
 @@ -843,6 +843,7 @@ set font_descs {
@@ -51,5 +51,5 @@ index 487d70691d..cb2b3c1e88 100644
  		{b gui.pruneduringfetch {mc "Prune Tracking Branches During Fetch"}}
  		{b gui.matchtrackingbranch {mc "Match Tracking Branches"}}
 -- 
-2.51.2
+2.52.0
 

@@ -1,4 +1,4 @@
-From b392848889c2a5e4b2851eff342d438c02317ada Mon Sep 17 00:00:00 2001
+From 4edd445ed6cfa68a60673c1ac26d05c483983068 Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Mon, 8 Nov 2010 10:35:34 +0100
 Subject: [PATCH 05/18] gitk: Add "First parent" checkbox
@@ -14,7 +14,7 @@ Signed-off-by: Stefan Haller <stefan@haller-berlin.de>
  1 file changed, 22 insertions(+), 3 deletions(-)
 
 diff --git a/gitk-git/gitk b/gitk-git/gitk
-index f401880415..ac68d43993 100755
+index 1fe93d5590..7d41df18b0 100755
 --- a/gitk-git/gitk
 +++ b/gitk-git/gitk
 @@ -2650,6 +2650,10 @@ proc makewindow {} {
@@ -28,7 +28,7 @@ index f401880415..ac68d43993 100755
      set ctext .bleft.bottom.ctext
      text $ctext -background $bgcolor -foreground $fgcolor \
          -state disabled -undo 0 -font textfont \
-@@ -7516,6 +7520,7 @@ proc selectline {l isnew {desired_loc {}} {switch_to_patch 0}} {
+@@ -7519,6 +7523,7 @@ proc selectline {l isnew {desired_loc {}} {switch_to_patch 0}} {
      global targetrow targetid lastscrollrows
      global autocopy autoselect autosellen jump_to_here
      global vinlinediff
@@ -36,7 +36,7 @@ index f401880415..ac68d43993 100755
  
      unset -nocomplain pending_select
      unset -nocomplain pending_select_file
-@@ -7669,7 +7674,7 @@ proc selectline {l isnew {desired_loc {}} {switch_to_patch 0}} {
+@@ -7672,7 +7677,7 @@ proc selectline {l isnew {desired_loc {}} {switch_to_patch 0}} {
          gettree $id
      } elseif {$vinlinediff($curview) == 1} {
          showinlinediff $id
@@ -45,7 +45,7 @@ index f401880415..ac68d43993 100755
          startdiff $id
      } else {
          mergediff $id
-@@ -8114,7 +8119,7 @@ proc diffcmd {ids flags} {
+@@ -8117,7 +8122,7 @@ proc diffcmd {ids flags} {
  proc gettreediffs {ids} {
      global treediff treepending limitdiffs vfilelimit curview
  
@@ -54,7 +54,7 @@ index f401880415..ac68d43993 100755
      if {$limitdiffs && $vfilelimit($curview) ne {}} {
              set cmd [concat $cmd -- $vfilelimit($curview)]
      }
-@@ -8211,21 +8216,34 @@ proc initblobdiffvars {} {
+@@ -8214,21 +8219,34 @@ proc initblobdiffvars {} {
      set diffseehere -1
  }
  
@@ -90,7 +90,7 @@ index f401880415..ac68d43993 100755
      if {$limitdiffs && $vfilelimit($curview) ne {}} {
          set cmd [concat $cmd -- $vfilelimit($curview)]
      }
-@@ -12693,6 +12711,7 @@ set diffcontext 3
+@@ -12702,6 +12720,7 @@ set diffcontext 3
  set mergecolors {red blue "#00ff00" purple brown "#009090" magenta "#808000" "#009000" "#ff0080" cyan "#b07070" "#70b0f0" "#70f0b0" "#f0b070" "#ff70b0"}
  set ignorespace 0
  set worddiff ""
@@ -99,5 +99,5 @@ index f401880415..ac68d43993 100755
  
  set headbgcolor "#00ff00"
 -- 
-2.51.2
+2.52.0
 

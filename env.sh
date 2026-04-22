@@ -3,8 +3,12 @@ CURRENT_GIT_VERSION=""
 
 function current-git-version() {
   if [ -z "$CURRENT_GIT_VERSION" ]; then
-    if [ "`uname`" == "Darwin" ]; then sed_regexp="-E"; else sed_regexp="-r"; fi
-    CURRENT_GIT_VERSION=$(curl -L http://git-scm.com/ 2>&1 | grep '<span class="version">' -A 1 | tail -n 1 | sed $sed_regexp 's/ *//')
+    local homepage
+    homepage=$(curl -fsSL https://git-scm.com/ 2>/dev/null)
+    CURRENT_GIT_VERSION=$(printf '%s' "$homepage" | grep -oE '<span class="version">[0-9]+\.[0-9]+\.[0-9]+</span>' | head -n 1 | grep -oE '[0-9]+\.[0-9]+\.[0-9]+')
+    if [ -z "$CURRENT_GIT_VERSION" ]; then
+      CURRENT_GIT_VERSION=$(printf '%s' "$homepage" | grep -oE 'RelNotes/[0-9]+\.[0-9]+\.[0-9]+\.adoc' | head -n 1 | grep -oE '[0-9]+\.[0-9]+\.[0-9]+')
+    fi
   fi
   echo "$CURRENT_GIT_VERSION"
 }

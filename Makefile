@@ -4,7 +4,7 @@ C_INCLUDE_PATH := /usr/include
 CPLUS_INCLUDE_PATH := /usr/include
 LD_LIBRARY_PATH := /usr/lib
 
-OSX_VERSION := 10.6
+OSX_VERSION := 10.13
 SDK_PATH := $(shell bin/find-dir  $(PWD)/MacOSX10.9.sdk /Developer/SDKs/MacOSX$(OSX_VERSION).sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX$(OSX_VERSION).sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform)
 TARGET_FLAGS := -mmacosx-version-min=$(OSX_VERSION) -DMACOSX_DEPLOYMENT_TARGET=$(OSX_VERSION)
 
@@ -25,6 +25,12 @@ OSX_NAME := Yosemite
 endif
 ifeq ("$(OSX_VERSION)", "10.11")
 OSX_NAME := El Capitan
+endif
+ifeq ("$(OSX_VERSION)", "10.12")
+OSX_NAME := Sierra
+endif
+ifeq ("$(OSX_VERSION)", "10.13")
+OSX_NAME := High Sierra
 endif
 
 OSX_CODE := $(shell echo "$(OSX_NAME)" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
@@ -111,7 +117,7 @@ $(BUILD_DIR)/git-$(VERSION)/Makefile: build/git-$(VERSION).tar.gz
 $(BUILD_DIR)/git-$(VERSION)/osx-built: $(BUILD_DIR)/git-$(VERSION)/Makefile
 	[ -d $(DESTDIR)$(GIT_PREFIX) ] && $(SUDO) rm -rf $(DESTDIR) || echo ok
 	mkdir -p $(DESTDIR)$(GIT_PREFIX)
-	./build_tcl.sh && cp -r $(GIT_PREFIX)/tcl-tk $(DESTDIR)$(GIT_PREFIX)
+	OSX_VERSION=$(OSX_VERSION) ./build_tcl.sh && cp -r $(GIT_PREFIX)/tcl-tk $(DESTDIR)$(GIT_PREFIX)
 	cd $(BUILD_DIR)/git-$(VERSION); $(SUBMAKE) -j $(CORES) XML_CATALOG_FILES="$(XML_CATALOG_FILES)" all html strip
 	touch $@
 

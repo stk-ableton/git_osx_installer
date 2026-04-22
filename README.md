@@ -20,7 +20,9 @@ If you are running:
 - `10.8` Mountain Lion: git-*-snow-leopard
 - `10.9` Mavericks: git-*-mavericks
 - `10.10` Yosemite: git-*-mavericks
-- `10.11` Yosemite: git-*-mavericks
+- `10.11` El Capitan: git-*-mavericks
+- `10.12` Sierra: git-*-high-sierra
+- `10.13` High Sierra: git-*-high-sierra
 
 The Snow Leopard builds will work on Mavericks and later, but there are issues running `git gui`.
 

@@ -188,7 +188,7 @@ disk-image/git-$(VERSION).pkg: disk-image/VERSION-$(VERSION)-$(ARCH_CODE)-$(OSX_
 
 git-%.dmg: disk-image/git-%.pkg
 	rm -f git-$(VERSION)*.dmg
-	hdiutil create git-$(VERSION).uncompressed.dmg -fs HFS+ -srcfolder disk-image -volname "Git $(VERSION) $(OSX_NAME) Intel $(ARCH)" -ov
+	hdiutil create git-$(VERSION).uncompressed.dmg -fs HFS+ -srcfolder disk-image -volname "Git $(VERSION) $(OSX_NAME) $(ARCH)" -ov
 	hdiutil convert -format UDZO -o $@ git-$(VERSION).uncompressed.dmg
 	rm -f git-$(VERSION).uncompressed.dmg
 

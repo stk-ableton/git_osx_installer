@@ -1,7 +1,7 @@
-From 5ddae76f749708dab07202d6fce9bc405dec95dc Mon Sep 17 00:00:00 2001
+From 8c729ff804feb9bd95005a40c3be6c0f6eac188f Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Mon, 12 Oct 2020 17:10:02 +0200
-Subject: [PATCH 02/18] git-gui/gitk: Delete the code to set an icon
+Subject: [PATCH 02/19] git-gui/gitk: Delete the code to set an icon
 
 When using our bundled Tcl/Tk 8.6.10, this interferes with the normal display
 of the app's icon. Not sure why this wasn't a problem before.
@@ -11,10 +11,10 @@ of the app's icon. Not sure why this wasn't a problem before.
  2 files changed, 49 deletions(-)
 
 diff --git a/git-gui/git-gui.sh b/git-gui/git-gui.sh
-index 23fe76e498..3fb7afb31a 100755
+index 15dd2b3a84..62f1598289 100755
 --- a/git-gui/git-gui.sh
 +++ b/git-gui/git-gui.sh
-@@ -706,31 +706,6 @@ if {[is_Windows]} {
+@@ -687,31 +687,6 @@ if {[is_Windows]} {
  	if {![info exists env(DISPLAY)]} {
  		set env(DISPLAY) :9999
  	}
@@ -47,10 +47,10 @@ index 23fe76e498..3fb7afb31a 100755
  
  ######################################################################
 diff --git a/gitk-git/gitk b/gitk-git/gitk
-index a2d5cab0b3..1fe93d5590 100755
+index a07e7408f5..ede2cb5b2e 100755
 --- a/gitk-git/gitk
 +++ b/gitk-git/gitk
-@@ -12980,30 +12980,6 @@ setcoords
+@@ -12978,30 +12978,6 @@ setcoords
  makewindow
  if {$::tcl_platform(platform) eq {windows} && [file exists $gitk_prefix/etc/git.ico]} {
      wm iconbitmap . -default $gitk_prefix/etc/git.ico
@@ -82,5 +82,5 @@ index a2d5cab0b3..1fe93d5590 100755
  # wait for the window to become visible
  if {![winfo viewable .]} {tkwait visibility .}
 -- 
-2.52.0
+2.55.0.516.gfe69728ecb
 

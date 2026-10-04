@@ -1,7 +1,7 @@
-From b5e443601a259a4b0e6a8114c87c3d2be9964d40 Mon Sep 17 00:00:00 2001
+From 7d93c2c741b1605dc39070898e29637a9b635f3e Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Tue, 25 Sep 2012 18:38:18 +0200
-Subject: [PATCH 01/18] gitk: Add options --select-file and --select-line
+Subject: [PATCH 01/19] gitk: Add options --select-file and --select-line
 
 These can be used in combination with --select-commit to jump to a given
 line in a patch on startup. (They don't have any effect when
@@ -44,7 +44,7 @@ easily be mapped to a key in vim or other editors.
  1 file changed, 28 insertions(+), 3 deletions(-)
 
 diff --git a/gitk-git/gitk b/gitk-git/gitk
-index 2730274966..a2d5cab0b3 100755
+index 9506739c50..a07e7408f5 100755
 --- a/gitk-git/gitk
 +++ b/gitk-git/gitk
 @@ -706,12 +706,17 @@ proc stop_rev_list {view} {
@@ -92,7 +92,7 @@ index 2730274966..a2d5cab0b3 100755
              } else {
                  set row [first_real_row]
                  selectline $row 1
-@@ -5429,7 +5444,7 @@ proc layoutmore {} {
+@@ -5432,7 +5447,7 @@ proc layoutmore {} {
      if {[info exists pending_select] &&
          [commitinview $pending_select $curview]} {
          update
@@ -101,7 +101,7 @@ index 2730274966..a2d5cab0b3 100755
      }
      drawvisible
  }
-@@ -7506,6 +7521,8 @@ proc selectline {l isnew {desired_loc {}} {switch_to_patch 0}} {
+@@ -7509,6 +7524,8 @@ proc selectline {l isnew {desired_loc {}} {switch_to_patch 0}} {
      global vinlinediff
  
      unset -nocomplain pending_select
@@ -110,7 +110,7 @@ index 2730274966..a2d5cab0b3 100755
      $canv delete hover
      normalline
      unsel_reflist
-@@ -12837,6 +12854,8 @@ if {[catch {set gitdir [exec git rev-parse --git-dir]}]} {
+@@ -12835,6 +12852,8 @@ if {[catch {set gitdir [exec git rev-parse --git-dir]}]} {
  
  set selecthead {}
  set selectheadid {}
@@ -119,7 +119,7 @@ index 2730274966..a2d5cab0b3 100755
  
  set revtreeargs {}
  set cmdline_files {}
-@@ -12852,6 +12871,12 @@ foreach arg $argv {
+@@ -12850,6 +12869,12 @@ foreach arg $argv {
          "--select-commit=*" {
              set selecthead [string range $arg 16 end]
          }
@@ -133,5 +133,5 @@ index 2730274966..a2d5cab0b3 100755
              set revtreeargscmd [string range $arg 10 end]
          }
 -- 
-2.52.0
+2.55.0.516.gfe69728ecb
 

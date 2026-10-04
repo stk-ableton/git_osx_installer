@@ -1,7 +1,7 @@
-From 408c3757279c999a32e454be9de1216ac4969849 Mon Sep 17 00:00:00 2001
+From 4b95d9cf9d676d349304572989897eb1add3bbea Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Tue, 2 Sep 2025 13:25:36 +0200
-Subject: [PATCH 17/18] gitk: Avoid horizontal scrolling of the commit list and
+Subject: [PATCH 17/19] gitk: Avoid horizontal scrolling of the commit list and
  diff
 
 With two-finger scrolling on a track pad, horizontal scrolling of the commit
@@ -13,7 +13,7 @@ couldn't test this because I don't have one.
  1 file changed, 2 deletions(-)
 
 diff --git a/gitk-git/gitk b/gitk-git/gitk
-index 27ee5e8c54..92f3932d9d 100755
+index 818d996362..5c2cc5ff65 100755
 --- a/gitk-git/gitk
 +++ b/gitk-git/gitk
 @@ -2354,7 +2354,6 @@ proc bind_mousewheel {} {
@@ -33,5 +33,5 @@ index 27ee5e8c54..92f3932d9d 100755
          }
      }
 -- 
-2.52.0
+2.55.0.516.gfe69728ecb
 

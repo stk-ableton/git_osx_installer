@@ -1,7 +1,7 @@
-From 916479a388e16d5c9468e20eb83aa3b5bdd28202 Mon Sep 17 00:00:00 2001
+From 8ae25b8743c74cfdfb357896f7b0ad7719d6fee6 Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Wed, 18 Nov 2020 21:42:54 +0100
-Subject: [PATCH 09/18] git-gui: stage or unstage files with double-click or
+Subject: [PATCH 09/19] git-gui: stage or unstage files with double-click or
  Return
 
 When observing new users of git gui, I often see that they have trouble finding
@@ -18,10 +18,10 @@ Signed-off-by: Stefan Haller <stefan@haller-berlin.de>
  1 file changed, 3 insertions(+)
 
 diff --git a/git-gui/git-gui.sh b/git-gui/git-gui.sh
-index 6667809890..dfcd848f1b 100755
+index 3874342832..3b48a3ae0a 100755
 --- a/git-gui/git-gui.sh
 +++ b/git-gui/git-gui.sh
-@@ -3796,6 +3796,9 @@ bind .   <$M1B-Key-Return> do_commit
+@@ -3848,6 +3848,9 @@ bind .   <$M1B-Key-Return> do_commit
  bind .   <$M1B-Key-KP_Enter> do_commit
  foreach i [list $ui_index $ui_workdir] {
  	bind $i <Button-1>       { toggle_or_diff click %W %x %y; break }
@@ -32,5 +32,5 @@ index 6667809890..dfcd848f1b 100755
  	bind $i <Shift-Button-1> { add_range_to_selection %W %x %y; break }
  	bind $i <Key-Up>         { toggle_or_diff up %W; break }
 -- 
-2.52.0
+2.55.0.516.gfe69728ecb
 

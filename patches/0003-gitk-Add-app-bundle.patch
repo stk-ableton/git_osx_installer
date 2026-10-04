@@ -1,7 +1,7 @@
-From 1fdca4cb5d2989499bd2e933b10944d2aabdd8a4 Mon Sep 17 00:00:00 2001
+From 21e05fc9f5c19d873722caea99aeb433a8278210 Mon Sep 17 00:00:00 2001
 From: Stefan Haller <stefan@haller-berlin.de>
 Date: Sun, 2 Jun 2013 08:52:14 +0200
-Subject: [PATCH 03/18] gitk: Add app bundle
+Subject: [PATCH 03/19] gitk: Add app bundle
 
 This way we get a nicer dock icon.
 ---
@@ -17,12 +17,12 @@ This way we get a nicer dock icon.
  create mode 100644 gitk-git/macosx/gitk.icns
 
 diff --git a/git-gui/git-gui.sh b/git-gui/git-gui.sh
-index 3fb7afb31a..66715e9b34 100755
+index 62f1598289..7aab65ac1c 100755
 --- a/git-gui/git-gui.sh
 +++ b/git-gui/git-gui.sh
-@@ -1984,11 +1984,20 @@ proc do_gitk {revs {is_submodule false}} {
+@@ -2040,11 +2040,20 @@ proc incr_font_size {font {amt 1}} {
+ proc do_gitk {revs {is_submodule false}} {
  	global current_diff_path file_states current_diff_side ui_index
- 	global _gitdir _gitworktree
  
 -	# -- Always start gitk through whatever we were loaded with.  This
 -	#    lets us bypass using shell process on Windows systems.
@@ -45,15 +45,15 @@ index 3fb7afb31a..66715e9b34 100755
  	if {$exe eq {}} {
  		error_popup [mc "Couldn't find gitk in PATH"]
  	} else {
-@@ -2028,7 +2037,7 @@ proc do_gitk {revs {is_submodule false}} {
- 			unset env(GIT_DIR)
- 			unset env(GIT_WORK_TREE)
+@@ -2077,7 +2086,7 @@ proc do_gitk {revs {is_submodule false}} {
+ 			# to skip the heuristics to find their proper value
+ 			unset_gitdir_vars
  		}
 -		safe_exec_bg [concat $cmd $revs "--" "--"]
 +		safe_exec_bg [concat $cmd $revs $double_dash_for_wish "--"]
  
- 		set env(GIT_DIR) $_gitdir
- 		set env(GIT_WORK_TREE) $_gitworktree
+ 		set_gitdir_vars
+ 		cd $pwd
 diff --git a/gitk-git/.gitignore b/gitk-git/.gitignore
 index 15f96aad5e..38840cae36 100644
 --- a/gitk-git/.gitignore
@@ -64,7 +64,7 @@ index 15f96aad5e..38840cae36 100644
 +/Gitk.app
  po/gitk.pot
 diff --git a/gitk-git/Makefile b/gitk-git/Makefile
-index 41116d8a14..3f9d580078 100644
+index dd87f501e5..fe828ef034 100644
 --- a/gitk-git/Makefile
 +++ b/gitk-git/Makefile
 @@ -1,6 +1,8 @@
@@ -84,7 +84,7 @@ index 41116d8a14..3f9d580078 100644
  TCLTK_PATH_SQ = $(subst ','\'',$(TCLTK_PATH))
  
  ### Detect Tck/Tk interpreter path changes
-@@ -50,9 +53,41 @@ endif
+@@ -53,9 +56,41 @@ endif
  
  all:: gitk-wish $(ALL_MSGFILES)
  
@@ -126,7 +126,7 @@ index 41116d8a14..3f9d580078 100644
  	$(INSTALL) -d -m 755 '$(DESTDIR_SQ)$(msgsdir_SQ)'
  	$(foreach p,$(ALL_MSGFILES), $(INSTALL) -m 644 $p '$(DESTDIR_SQ)$(msgsdir_SQ)' &&) true
  
-@@ -65,7 +100,7 @@ clean::
+@@ -68,7 +103,7 @@ clean::
  
  gitk-wish: gitk GIT-TCLTK-VARS
  	$(QUIET_GEN)$(RM) $@ $@+ && \
@@ -2644,5 +2644,5 @@ literal 0
 HcmV?d00001
 
 -- 
-2.52.0
+2.55.0.516.gfe69728ecb
 

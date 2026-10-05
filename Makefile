@@ -35,14 +35,10 @@ endif
 
 OSX_CODE := $(shell echo "$(OSX_NAME)" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
 
-ARCH := Universal
-ARCH_CODE := universal
-ARCH_FLAGS_universal := -arch x86_64 -arch arm64
-ARCH_FLAGS_x86_64 := -arch x86_64
-ARCH_FLAGS_arm64 := -arch arm64
+ARCH_CODE := arm64
 
-CFLAGS := $(TARGET_FLAGS) $(ARCH_FLAGS_${ARCH_CODE})
-LDFLAGS := $(TARGET_FLAGS) $(ARCH_FLAGS_${ARCH_CODE})
+CFLAGS := $(TARGET_FLAGS) -arch $(ARCH_CODE)
+LDFLAGS := $(TARGET_FLAGS) -arch $(ARCH_CODE)
 
 BAK_FOLDER := $(shell date +%s)
 PREFIX := /usr/local
@@ -66,7 +62,6 @@ CORES := $(shell sysctl -n hw.ncpu)
 vars:
 	# OSX_NAME = $(OSX_NAME)
 	# OSX_CODE = $(OSX_CODE)
-	# ARCH = $(ARCH)
 	# ARCH_CODE = $(ARCH_CODE)
 	# CFLAGS = $(CFLAGS)
 	# BUILD_CODE = $(BUILD_CODE)
@@ -188,7 +183,7 @@ disk-image/git-$(VERSION).pkg: disk-image/VERSION-$(VERSION)-$(ARCH_CODE)-$(OSX_
 
 git-%.dmg: disk-image/git-%.pkg
 	rm -f git-$(VERSION)*.dmg
-	hdiutil create git-$(VERSION).uncompressed.dmg -fs HFS+ -srcfolder disk-image -volname "Git $(VERSION) $(OSX_NAME) $(ARCH)" -ov
+	hdiutil create git-$(VERSION).uncompressed.dmg -fs HFS+ -srcfolder disk-image -volname "Git $(VERSION) $(OSX_NAME)" -ov
 	hdiutil convert -format UDZO -o $@ git-$(VERSION).uncompressed.dmg
 	rm -f git-$(VERSION).uncompressed.dmg
 
